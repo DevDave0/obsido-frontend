@@ -37,8 +37,9 @@ class Login extends Component {
             }
             else {
                 this.props.loginUser(data.user.data)
-                // localStorage.token = data.token
-                // localStorage.currentUser = data.user
+                this.props.toggleLogin()
+                localStorage.token = data.token
+                localStorage.userId = data.user.data.attributes.id
             }
         })
     }

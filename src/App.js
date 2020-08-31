@@ -16,7 +16,8 @@ class App extends React.Component {
           <SignUp />
           <Chart />
 
-          <Route path="/" component={ Login } />
+          <Route path="/sign_up" render={(routeProps) => <SignUp routeProps={routeProps} />} />
+          <Route path="/login" render={(routeProps) => <Login routeProps={routeProps} />} />
         </div>
       </BrowserRouter>
     );

@@ -4,6 +4,7 @@ import Chart from './components/Chart';
 import SignUp from './SignUp';
 import Login from './Login'
 import {BrowserRouter, Route} from 'react-router-dom'
+import 'semantic-ui-css/semantic.min.css'
 
 
 class App extends React.Component {

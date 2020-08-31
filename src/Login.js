@@ -1,6 +1,11 @@
 import React, {Component} from 'react'
 import { Link } from 'react-router-dom'
 import { Form, Grid, Header, Message, Segment, Icon } from 'semantic-ui-react'
+import {connect} from 'react-redux';
+import {loginUser, toggleLogin} from './actions/index';
+
+const baseURL = 'http://localhost:3000/'
+const loginURL = baseURL + 'login'
 
 class Login extends Component {
 
@@ -14,7 +19,7 @@ class Login extends Component {
     handleSubmit = (e) => {
         e.preventDefault()
 
-        fetch('http://localhost:3000/login', {
+        fetch( loginURL, {
             method: 'POST',
             headers: {
                 'Content-Type' : "application/json"
@@ -25,7 +30,17 @@ class Login extends Component {
             })
         })
         .then( resp => resp.json())
-        .then(console.log)
+        .then(data => {
+            console.log(data.user.data)
+            if (data.message){
+                console.error('Error:', data.message)
+            }
+            else {
+                this.props.loginUser(data.user.data)
+                // localStorage.token = data.token
+                // localStorage.currentUser = data.user
+            }
+        })
     }
 
     render() {
@@ -57,4 +72,5 @@ class Login extends Component {
 
 }
 
-export default Login 
+
+export default connect(null, { loginUser, toggleLogin })(Login)

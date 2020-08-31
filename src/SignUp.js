@@ -1,7 +1,8 @@
 import React, {Component} from 'react'
 import { Link } from 'react-router-dom'
-import { Button, Form, Grid, Header, Image, Message, Segment, Icon } from 'semantic-ui-react'
-
+import { Form, Grid, Header, Message, Segment, Icon } from 'semantic-ui-react'
+import {connect} from 'react-redux';
+import {loginUser, toggleLogin} from './actions/index';
 
 class SignUp extends Component {
 
@@ -27,6 +28,7 @@ class SignUp extends Component {
         })
         .then(resp => resp.json())
         .then(data => {
+            console.log(data)
             localStorage.token = data.token
         })
     }
@@ -34,14 +36,6 @@ class SignUp extends Component {
     render() {
         return(
             <div>
-                {/* <h2>Sign Up</h2>
-                <form onSubmit={(e)=> this.signUp(e)}>
-                    <label>Username: </label>
-                    <input onChange={(e) => this.handleChange(e)} name='name' type='text'/>
-                    <label>Password: </label>
-                    <input onChange={(e) => this.handleChange(e)} name='password' type='password'/>
-                    <input type='submit'/>
-                </form> */}
 
             <Grid textAlign='center' style={{ height: '100vh' }} verticalAlign='middle'>
                 <Grid.Column style={{ maxWidth: 450 }}>
@@ -73,4 +67,5 @@ class SignUp extends Component {
 
 }
 
-export default SignUp 
+
+export default connect(null, {loginUser})(SignUp)

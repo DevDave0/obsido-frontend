@@ -3,8 +3,8 @@ import {useSelector, useDispatch} from 'react-redux'
 import { increment, decrement } from '../actions/index'
 
 const Chart = () => {
-    const counter = useSelector(state => state.counterReducer)
-    const isLogged = useSelector(state => state.loggedReducer)
+    const counter = useSelector(state => state.counter)
+    const isLogged = useSelector(state => state.login)
     const dispatch = useDispatch();
 
     return (
@@ -16,6 +16,7 @@ const Chart = () => {
 
             {isLogged ? <h3>Valuable information I shouldn't see</h3> : ""}
 
+            {/* <h3>Valuable information I shouldn't see</h3> */}
         </div>
     )
 }

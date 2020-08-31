@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 
 
-class SignUp extends Component {
+class Login extends Component {
 
 
     handleChange = (e) => {
@@ -10,30 +10,28 @@ class SignUp extends Component {
         })
     }
 
-    signUp = (e) => {
+    handleSubmit = (e) => {
         e.preventDefault()
-        
-        fetch('http://localhost:3000/users', {
-            method: "POST",
+
+        fetch('http://localhost:3000/login', {
+            method: 'POST',
             headers: {
-                "Content-Type" : "application/json"
+                'Content-Type' : "application/json"
             },
             body: JSON.stringify({
                 name: this.state.name,
                 password: this.state.password
             })
         })
-        .then(resp => resp.json())
-        .then(data => {
-            localStorage.token = data.token
-        })
+        .then( resp => resp.json())
+        .then(console.log)
     }
 
     render() {
         return(
             <div>
-                <h2>Sign Up</h2>
-                <form onSubmit={(e)=> this.signUp(e)}>
+                <h2>Login</h2>
+                <form onSubmit={(e)=> this.handleSubmit(e)}>
                     <label>Username: </label>
                     <input onChange={(e) => this.handleChange(e)} name='name' type='text'/>
                     <label>Password: </label>
@@ -46,4 +44,4 @@ class SignUp extends Component {
 
 }
 
-export default SignUp 
+export default Login 

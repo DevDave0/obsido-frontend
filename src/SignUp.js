@@ -29,7 +29,15 @@ class SignUp extends Component {
         .then(resp => resp.json())
         .then(data => {
             console.log(data)
-            localStorage.token = data.token
+            if (data.message){
+                console.error('Error:', data.message)
+            }
+            else {
+                this.props.loginUser(data.user.data)
+                this.props.toggleLogin()
+                localStorage.token = data.token
+                localStorage.userId = data.user.data.attributes.id
+            }
         })
     }
 

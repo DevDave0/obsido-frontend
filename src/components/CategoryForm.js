@@ -10,27 +10,32 @@ const CategoryForm = (props) => {
     // once we make the category, we change the state of the piechart accordingly. 
 
     const [category, setCategory] = useState('Misc')
+    const [description, setDescription] = useState('')
+    const [amount, setAmount] = useState(0)
 
     const submit = (e) => {
         e.preventDefault();
+        setAmount(0)
         setCategory('Misc')
-        props.addCategory({category})
+        setDescription('')
+        // props.addCategory({category, description, amount})
+        console.log(category, amount, description)
     }
 
     return (
         <div>
             <h1>CategoryForm</h1>
-            <form>
-                <input placeholder="$Amount" type='text' />
+            <form className='new-category-form' onSubmit={submit} >
+                <input placeholder="$Amount" type='text' value={amount} onChange={(e) => setAmount(e.target.value)} />
                 <label>
                     Pick a Category
                 </label>
-                    <select>
+                    <select value={category} onChange={(e) => setCategory(e.target.value)} >
                         {
                             CATEGORIES.map(category => <option key={category}>{category}</option>)
                         }
                     </select>
-                <input placeholder="Description" type='text' />
+                <input placeholder="Description" type='text' value={description} onChange={(e) => setDescription(e.target.value)} />
                 <input type='submit' value='Add category' />
             </form>
         </div>

@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import { Link } from 'react-router-dom'
 import { Form, Grid, Header, Message, Segment, Icon } from 'semantic-ui-react'
 import {connect} from 'react-redux';
-import {loginUser, toggleLogin} from './actions/index';
+import {loginUser, loggedIn} from './actions/index';
 
 const baseURL = 'http://localhost:3000/'
 const loginURL = baseURL + 'login'
@@ -37,7 +37,7 @@ class Login extends Component {
             }
             else {
                 this.props.loginUser(data.user.data)
-                this.props.toggleLogin()
+                this.props.loggedIn()
                 localStorage.token = data.token
                 localStorage.userId = data.user.data.attributes.id
             }
@@ -74,4 +74,4 @@ class Login extends Component {
 }
 
 
-export default connect(null, { loginUser, toggleLogin })(Login)
+export default connect(null, { loginUser, loggedIn })(Login)

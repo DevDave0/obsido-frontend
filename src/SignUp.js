@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import { Link } from 'react-router-dom'
 import { Form, Grid, Header, Message, Segment, Icon } from 'semantic-ui-react'
 import {connect} from 'react-redux';
-import {loginUser, toggleLogin} from './actions/index';
+import {loginUser, loggedIn} from './actions/index';
 
 class SignUp extends Component {
 
@@ -76,4 +76,4 @@ class SignUp extends Component {
 }
 
 
-export default connect(null, {loginUser})(SignUp)
+export default connect(null, {loginUser, loggedIn})(SignUp)

@@ -17,8 +17,8 @@ export const loginUser = (user) => {
 }
 
 
-export const toggleLogin = () => {
+export const loggedIn = () => {
     return (dispatch) => {
-        dispatch({ type: 'TOGGLE_LOGIN'})
+        dispatch({ type: 'LOGGED_IN'})
     }
 }

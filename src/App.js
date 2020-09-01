@@ -1,28 +1,45 @@
 import React from 'react';
 import './App.css';
-import Chart from './components/Chart';
 import SignUp from './SignUp';
 import Login from './Login'
-import {BrowserRouter, Route} from 'react-router-dom'
+import {BrowserRouter, Route, Redirect} from 'react-router-dom'
 import 'semantic-ui-css/semantic.min.css'
+import Main from './containers/Main'
+import {connect} from 'react-redux';
+import {loggedIn} from './actions/index';
 
 
 class App extends React.Component {
+
+  componentDidMount(){
+    if(localStorage.token) {
+      this.props.loggedIn()
+    }
+  }
+
   render(){
     return (
       <BrowserRouter>
         <div className="App">
-          <h1>PieChart</h1>
-          <Login />
-          <SignUp />
-          <Chart />
 
-          <Route path="/sign_up" render={(routeProps) => <SignUp routeProps={routeProps} />} />
-          <Route path="/login" render={(routeProps) => <Login routeProps={routeProps} />} />
+          <Route path="/sign_up" render={(routeProps) => (this.props.login) ? <Redirect to='/home' /> :
+          <SignUp routeProps={routeProps} />} />
+
+          <Route path="/" render={(routeProps) => (this.props.login) ? <Redirect to='/home' /> :
+          <Login routeProps={routeProps} />} />
+
+          <Route path="/home" render={(routeProps) => (this.props.login) ? <Main /> : 
+          <Redirect to='/' /> } />
         </div>
       </BrowserRouter>
     );
   }
 }
 
-export default App;
+const mapStateToProps = state => {
+  return {
+    login: state.login
+  }
+}
+
+export default connect(mapStateToProps, { loggedIn })(App);

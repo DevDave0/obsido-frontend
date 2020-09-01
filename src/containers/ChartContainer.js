@@ -1,14 +1,14 @@
 import React from 'react'
 import Counter from '../components/Counter'
 import CategoryForm from '../components/CategoryForm'
-import Chart from '../components/Chart'
+import DoughnutChart from '../components/DoughnutChart'
 
 const ChartContainer = () => {
 
     return (
         <div>
             <h1>ChartContainer</h1>
-            <Chart />
+            <DoughnutChart />
             <CategoryForm />
             <Counter />
         </div>

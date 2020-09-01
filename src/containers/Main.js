@@ -1,7 +1,7 @@
 import React from 'react'
-import Chart from '../components/Chart'
 import {connect} from 'react-redux';
 import {loggedOut} from '../actions/index';
+import ChartContainer from './ChartContainer'
 
 const Main = (props) => {
 
@@ -14,7 +14,7 @@ const Main = (props) => {
     return (
         <div>
             <h1>MainContainer</h1>
-            <Chart />
+            <ChartContainer />
             <button onClick={(e) => logOut(e) } >Log Out</button>
         </div>
     )

@@ -28,3 +28,9 @@ export const loggedOut = () => {
         dispatch({ type: 'LOG_OUT'})
     }
 }
+
+export const addCategory = () => {
+    return (dispatch) => {
+        dispatch({type: "ADD_CATEGORY"})
+    }
+}

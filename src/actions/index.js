@@ -22,3 +22,9 @@ export const loggedIn = () => {
         dispatch({ type: 'LOGGED_IN'})
     }
 }
+
+export const loggedOut = () => {
+    return (dispatch) => {
+        dispatch({ type: 'LOG_OUT'})
+    }
+}

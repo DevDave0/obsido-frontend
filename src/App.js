@@ -13,6 +13,7 @@ class App extends React.Component {
 
   componentDidMount(){
     if(localStorage.token) {
+      // this action sets logged in status to true which is needed for my redirects
       this.props.loggedIn()
     }
   }

@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { addCategory } from '../actions/index'
+import {connect} from 'react-redux';
 
 
 const CategoryForm = () => {
@@ -11,11 +12,24 @@ const CategoryForm = () => {
         <div>
             <h1>CategoryForm</h1>
             <form>
-                <input placeholder="Amount" type='text' />
+                <input placeholder="$Amount" type='text' />
+                <label>
+                    Pick a Category
+                </label>
+                    <select>
+                        <option>
+                            1
+                        </option>
+                    </select>
+                <label>
+                    Add a category
+                </label>
+                <input placeholder="Add a category" type='text' />
+                <input placeholder="Description" type='text' />
                 <input type='submit' value='Add category' />
             </form>
         </div>
     )
 }
 
-export default CategoryForm
+export default connect(null, addCategory)(CategoryForm)

@@ -41,7 +41,7 @@ const CategoryForm = (props) => {
             // we send a post to create a category, with the response back we want to set the state in the redux store
             //  once we get the info for the category, we get the sum value of the amount of each category and display that data. 
             console.log(data)
-            // props.addCategory({category, amount, description})
+            props.addCategory({data})
         })
     }
 

@@ -16,6 +16,12 @@ export const loginUser = (user) => {
     }
 }
 
+export const logoutUser = (user) => {
+    return (dispatch) => {
+        dispatch({type: "LOGOUT_USER", user})
+    }
+}
+
 
 export const loggedIn = () => {
     return (dispatch) => {
@@ -32,5 +38,10 @@ export const loggedOut = () => {
 export const addCategory = (category) => {
     return (dispatch) => {
         dispatch({type: "ADD_CATEGORY", category})
+    }
+}
+export const clearCategory = (category) => {
+    return (dispatch) => {
+        dispatch({type: "CLEAR_CATEGORY", category})
     }
 }

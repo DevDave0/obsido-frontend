@@ -1,6 +1,6 @@
 import React from 'react'
 import {connect} from 'react-redux';
-import {loggedOut} from '../actions/index';
+import {loggedOut, logoutUser, clearCategory} from '../actions/index';
 import ChartContainer from './ChartContainer'
 
 const Main = (props) => {
@@ -8,6 +8,8 @@ const Main = (props) => {
     const logOut = (e) => {
         e.preventDefault()
         props.loggedOut()
+        props.logoutUser(props.user)
+        props.clearCategory(props.category)
         localStorage.clear()
     }
 
@@ -20,4 +22,11 @@ const Main = (props) => {
     )
 }
 
-export default connect(null, {loggedOut})(Main)
+    const mapStateToProps = state => {
+        return {
+            user: state.user,
+            category: state.category
+        }
+    }
+
+export default connect(mapStateToProps, {loggedOut, logoutUser, clearCategory})(Main)

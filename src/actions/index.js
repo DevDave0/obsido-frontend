@@ -56,11 +56,14 @@ export const fetchCategories = () => {
         fetch(categoryURL)
         .then(resp => resp.json())
         .then(categories => {
-            categories.filter(category => {
+            const result = categories.filter(category => {
                 if(category.user_id === parseInt(localStorage.userId)){
-                    dispatch({type: "ADD_CATEGORY", category: category})
+                    return category
                 }
+                else 
+                    return null
             })
+            dispatch({type: "ADD_CATEGORY", category: result})
         })
     }
 }

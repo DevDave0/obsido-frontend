@@ -1,6 +1,8 @@
-const categoryReducer = (state = {
+let initialState = {
     categories: [], loading: false
-}, action) => {
+}
+
+const categoryReducer = (state = initialState, action) => {
     switch(action.type) {
         case "LOADING_CATEGORIES":
             return {
@@ -15,7 +17,7 @@ const categoryReducer = (state = {
                 loading: false
             }
         case "CLEAR_CATEGORY":
-            return [];
+            return initialState;
         default:
             return state;
     }

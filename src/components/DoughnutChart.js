@@ -23,6 +23,11 @@ class DoughnutChart extends Component {
     // Here I want to input the sections of data with my own category data. 
 
     render(){
+
+        // let stockData = [];
+        // this.props.categories
+        console.log(this.props.categories)
+
         let data =  {
             labels: ['Stocks', 'Cryptos', 'Food', 'Bills', 'Shopping', 'Misc'],
             datasets: [
@@ -84,9 +89,7 @@ class DoughnutChart extends Component {
 
 const mapStateToProps = state => {
     return {
-        user: state.user,
-        categories: state.category,
-        loading: state.loading
+        categories: state.category
     }
 }
 

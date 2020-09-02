@@ -10,7 +10,7 @@ const ChartContainer = () => {
             <h1>ChartContainer</h1>
             <DoughnutChart />
             <CategoryForm />
-            <Counter />
+            {/* <Counter /> */}
         </div>
     )
 }

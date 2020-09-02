@@ -1,3 +1,6 @@
+const baseURL = 'http://localhost:3000/'
+const categoryURL = baseURL + 'categories'
+
 export const increment = () => {
     return {
         type: "INCREMENT"
@@ -43,5 +46,21 @@ export const addCategory = (category) => {
 export const clearCategory = (category) => {
     return (dispatch) => {
         dispatch({type: "CLEAR_CATEGORY", category})
+    }
+}
+
+
+export const fetchCategories = () => {
+    return (dispatch) => {
+        dispatch({ type: "LOADING_CATEGORIES"})
+        fetch(categoryURL)
+        .then(resp => resp.json())
+        .then(categories => {
+            categories.filter(category => {
+                if(category.user_id === parseInt(localStorage.userId)){
+                    dispatch({type: "ADD_CATEGORY", category: category})
+                }
+            })
+        })
     }
 }

@@ -1,9 +1,19 @@
 const categoryReducer = (state = {
-    categories: [],
+    categories: [], loading: false
 }, action) => {
     switch(action.type) {
+        case "LOADING_CATEGORIES":
+            return {
+                ...state,
+                categories: [...state.categories],
+                loading: true
+            }
         case "ADD_CATEGORY":
-            return {...state, categories: [...state.categories, action.category]}
+            return {
+                ...state, 
+                categories: [...state.categories, action.category],
+                loading: false
+            }
         case "CLEAR_CATEGORY":
             return [];
         default:

@@ -3,6 +3,9 @@ import { addCategory } from '../actions/index'
 import {connect} from 'react-redux';
 import {CATEGORIES} from '../data';
 
+const baseURL = 'http://localhost:3000/'
+const categoryURL = baseURL + 'categories'
+
 const CategoryForm = (props) => {
 
     // take the state we get from the form submit, send it to the reducer with our action
@@ -18,8 +21,26 @@ const CategoryForm = (props) => {
         setAmount(0)
         setCategory('Misc')
         setDescription('')
-        // props.addCategory({category, description, amount})
+        // props.addCategory({category, amount, description})
         console.log(category, amount, description)
+
+        let options = {
+            method: 'POST',
+            headers: {
+                'Content-Type' : "application/json"
+            },
+            body: JSON.stringify({
+                name: category,
+                amount: amount,
+                description: description
+            })
+        }
+
+        fetch(categoryURL, options)
+        .then(resp => resp.json())
+        .then(data => {
+            console.log(data)
+        })
     }
 
     return (
@@ -42,4 +63,4 @@ const CategoryForm = (props) => {
     )
 }
 
-export default connect(null, addCategory)(CategoryForm)
+export default connect(null, {addCategory})(CategoryForm)

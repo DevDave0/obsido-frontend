@@ -2,14 +2,19 @@ import React from 'react';
 import {Doughnut} from 'react-chartjs-2'
 
 
+function getRandomInt (min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
 const DoughnutChart = () => {
     
-    const data = {
+    // Here I want to input the sections of data with my own category data. 
+    const data =  {
         labels: ['Stocks', 'Cryptos', 'Food', 'Bills', 'Shopping', 'Misc'],
         datasets: [
             {
                 label: 'Percentage',
-                data: [35, 30, 15, 5, 5, 10],
+                data: [getRandomInt(50, 200), getRandomInt(50, 200), getRandomInt(50, 200), getRandomInt(50, 200), getRandomInt(50, 200), getRandomInt(50, 200)],
                 backgroundColor: [
                     'rgba(255, 99, 132, 1',
                     'rgba(255, 159, 64, 1',
@@ -21,13 +26,7 @@ const DoughnutChart = () => {
             }
         ]
     }
-
-    // const options = {
-    //     title: {
-    //         display: true, 
-    //         text: 'Doughnut Chart'
-    //     }
-    // }
+    
 
     return (
         <div className='chart'>

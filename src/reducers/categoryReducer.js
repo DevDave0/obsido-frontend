@@ -1,7 +1,9 @@
-const categoryReducer = (state = [], action) => {
+const categoryReducer = (state = {
+    categories: [],
+}, action) => {
     switch(action.type) {
         case "ADD_CATEGORY":
-            return true
+            return {...state, categories: [...state.categories, action.category]}
 
         default:
             return state;

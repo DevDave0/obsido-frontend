@@ -21,8 +21,6 @@ const CategoryForm = (props) => {
         setAmount(0)
         setCategory('Misc')
         setDescription('')
-        // props.addCategory({category, amount, description})
-        console.log(category, amount, description)
 
         let options = {
             method: 'POST',
@@ -32,14 +30,18 @@ const CategoryForm = (props) => {
             body: JSON.stringify({
                 name: category,
                 amount: amount,
-                description: description
+                description: description,
+                user_id: localStorage.token
             })
         }
 
         fetch(categoryURL, options)
         .then(resp => resp.json())
         .then(data => {
+            // we send a post to create a category, with the response back we want to set the state in the redux store
+            //  once we get the info for the category, we get the sum value of the amount of each category and display that data. 
             console.log(data)
+            // props.addCategory({category, amount, description})
         })
     }
 

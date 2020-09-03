@@ -16,6 +16,15 @@ const categoryReducer = (state = initialState, action) => {
                 categories: [...state.categories, action.category],
                 loading: false
             }
+
+        case "ADD_FETCH_CATEGORY":
+            return {
+                ...state, 
+                categories: [...state.categories, action.category],
+                loading: false
+            }
+
+
         case "CLEAR_CATEGORY":
             return initialState;
         default:

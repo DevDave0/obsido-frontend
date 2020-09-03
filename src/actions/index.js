@@ -61,9 +61,11 @@ export const fetchCategories = () => {
                     return category
                 }
                 else 
-                    return null
+                return null
             })
-            dispatch({type: "ADD_CATEGORY", category: result})
+            result.forEach(category => {
+                dispatch({type: "ADD_FETCH_CATEGORY", category: category})
+            })
         })
     }
 }

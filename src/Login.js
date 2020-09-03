@@ -31,7 +31,7 @@ class Login extends Component {
         })
         .then( resp => resp.json())
         .then(data => {
-            console.log(data.user.data)
+            // console.log(data.user.data)
             if (data.message){
                 console.error('Error:', data.message)
             }

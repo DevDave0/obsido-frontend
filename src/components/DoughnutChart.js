@@ -26,7 +26,10 @@ class DoughnutChart extends Component {
 
         // let stockData = [];
         // this.props.categories
-        console.log(this.props.categories)
+        // console.log(this.props.categories)
+
+
+
 
         let data =  {
             labels: ['Stocks', 'Cryptos', 'Food', 'Bills', 'Shopping', 'Misc'],
@@ -89,7 +92,7 @@ class DoughnutChart extends Component {
 
 const mapStateToProps = state => {
     return {
-        categories: state.category
+        categories: state.category.categories[0]
     }
 }
 

@@ -43,7 +43,9 @@ const CategoryForm = (props) => {
             // console.log(data)
             // let amount = data.category.data.attributes.amount
             // console.log(data.category.data.attributes.amount)
-            props.addCategory({data})
+            // console.log(data.category.data.attributes)
+            let category = data.category.data.attributes
+            props.addCategory(category)
         })
     }
 

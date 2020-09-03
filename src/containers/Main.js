@@ -2,6 +2,7 @@ import React from 'react'
 import {connect} from 'react-redux';
 import {loggedOut, logoutUser, clearCategory} from '../actions/index';
 import ChartContainer from './ChartContainer'
+import Navbar from './Navbar'
 
 const Main = (props) => {
 
@@ -15,6 +16,7 @@ const Main = (props) => {
 
     return (
         <div>
+            <Navbar />
             <h1>MainContainer</h1>
             <ChartContainer />
             <button onClick={(e) => logOut(e) } >Log Out</button>

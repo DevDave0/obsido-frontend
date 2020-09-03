@@ -6,6 +6,7 @@ function userReducer(state = {}, action){
             return action.user;
         case 'LOGOUT_USER':
             state = {};
+            // break
         default:
             return state
     } 

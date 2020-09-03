@@ -28,7 +28,7 @@ class SignUp extends Component {
         })
         .then(resp => resp.json())
         .then(data => {
-            console.log(data)
+            // console.log(data)
             let result = data.user.data
             if (data.message){
                 console.error('Error:', data.message)

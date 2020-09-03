@@ -1,5 +1,4 @@
 import React, {Component} from 'react'
-import Counter from '../components/Counter'
 import CategoryForm from '../components/CategoryForm'
 import DoughnutChart from '../components/DoughnutChart'
 import { fetchCategories } from '../actions/index'

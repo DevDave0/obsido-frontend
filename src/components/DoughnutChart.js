@@ -1,21 +1,14 @@
 import React, {Component} from 'react';
 import {Doughnut} from 'react-chartjs-2'
-import {connect} from 'react-redux';
-import { fetchCategories } from '../actions/index'
 
 // Ill have to do a fetch for all categories and then find the ones that match the user Id
 
-function getRandomInt (min, max) {
-    return Math.floor(Math.random() * (max - min + 1)) + min;
-}
-
+// function getRandomInt (min, max) {
+//     return Math.floor(Math.random() * (max - min + 1)) + min;
+// }
+// ^^^This function generates random numbers used for testing my chart
 
 class DoughnutChart extends Component {
-
-    // componentDidMount() {
-    //     this.props.fetchCategories()
-    // }
-    
     // Here I want to input the sections of data with my own category data. 
 
     render(){
@@ -84,12 +77,5 @@ class DoughnutChart extends Component {
 
 }
 
-
-// const mapStateToProps = state => {
-//     return {
-//         categories: state.category.categories.map(category => category.amount)
-//     }
-// }
-
-export default connect(null, {fetchCategories})(DoughnutChart)
+export default DoughnutChart
 

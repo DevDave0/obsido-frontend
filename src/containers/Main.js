@@ -1,10 +1,20 @@
-import React from 'react'
+import React, {useState} from 'react'
 import {connect} from 'react-redux';
 import {loggedOut, logoutUser, clearCategory} from '../actions/index';
 import ChartContainer from './ChartContainer'
-import Navbar from './Navbar'
+import Header from '../components/Header'
+import Sidebar from '../components/Sidebar'
+import classNames from 'classnames'
 
 const Main = (props) => {
+
+    const [toggle, setToggle] = useState(false);
+
+    const classes = classNames(
+        'pusher',
+        'bottom',
+        {'dimmed': toggle}
+    )
 
     const logOut = (e) => {
         e.preventDefault()
@@ -14,12 +24,24 @@ const Main = (props) => {
         localStorage.clear()
     }
 
+    const toggleMenu = () => {
+        setToggle(!toggle);
+    }
+
     return (
         <div>
-            <Navbar />
-            <h1>MainContainer</h1>
-            <ChartContainer />
-            <button onClick={(e) => logOut(e) } >Log Out</button>
+
+            <Header toggleMenu={toggleMenu} />
+            <div className='ui attached pushable' style={{height: '100vh'}}>
+                <Sidebar toggleMenu={toggle} />
+                <div className={classes}>
+                    <h1>MainContainer</h1>
+                    <ChartContainer />
+                    <button onClick={(e) => logOut(e) } >Log Out</button>
+
+                </div>
+
+            </div>
         </div>
     )
 }

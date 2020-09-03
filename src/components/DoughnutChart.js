@@ -29,7 +29,7 @@ class DoughnutChart extends Component {
             datasets: [
                 {
                     label: 'Percentage',
-                    data: [this.props.stockAmount[0], getRandomInt(50, 200), getRandomInt(50, 200), getRandomInt(50, 200), getRandomInt(50, 200), getRandomInt(50, 200)],
+                    data: [this.props.stockAmount.reduce((a,b)=> a + b, 0), getRandomInt(50, 200), getRandomInt(50, 200), getRandomInt(50, 200), getRandomInt(50, 200), getRandomInt(50, 200)],
                     backgroundColor: [
                         'rgba(255, 99, 132, 1',
                         'rgba(255, 159, 64, 1',

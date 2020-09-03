@@ -3,11 +3,7 @@ import {Doughnut} from 'react-chartjs-2'
 import {connect} from 'react-redux';
 import { fetchCategories } from '../actions/index'
 
-
-
 // Ill have to do a fetch for all categories and then find the ones that match the user Id
-
-
 
 function getRandomInt (min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -29,7 +25,13 @@ class DoughnutChart extends Component {
             datasets: [
                 {
                     label: 'Percentage',
-                    data: [this.props.stockAmount.reduce((a,b)=> a + b, 0), getRandomInt(50, 200), getRandomInt(50, 200), getRandomInt(50, 200), getRandomInt(50, 200), getRandomInt(50, 200)],
+                    data: [
+                        this.props.stockAmount.reduce((a,b)=> a + b, 0), 
+                        this.props.cryptoAmount.reduce((a,b)=> a + b, 0), 
+                        this.props.foodAmount.reduce((a,b)=> a + b, 0), 
+                        this.props.billsAmount.reduce((a,b)=> a + b, 0), 
+                        this.props.shoppingAmount.reduce((a,b)=> a + b, 0), 
+                        this.props.miscAmount.reduce((a,b)=> a + b, 0)],
                     backgroundColor: [
                         'rgba(255, 99, 132, 1',
                         'rgba(255, 159, 64, 1',

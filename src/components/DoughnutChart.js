@@ -16,27 +16,20 @@ function getRandomInt (min, max) {
 
 class DoughnutChart extends Component {
 
-    componentDidMount() {
-        this.props.fetchCategories()
-    }
+    // componentDidMount() {
+    //     this.props.fetchCategories()
+    // }
     
     // Here I want to input the sections of data with my own category data. 
 
     render(){
-
-        // let stockData = [];
-        // this.props.categories
-        // console.log(this.props.categories)
-
-
-
 
         let data =  {
             labels: ['Stocks', 'Cryptos', 'Food', 'Bills', 'Shopping', 'Misc'],
             datasets: [
                 {
                     label: 'Percentage',
-                    data: [getRandomInt(50, 200), getRandomInt(50, 200), getRandomInt(50, 200), getRandomInt(50, 200), getRandomInt(50, 200), getRandomInt(50, 200)],
+                    data: [this.props.stockAmount[0], getRandomInt(50, 200), getRandomInt(50, 200), getRandomInt(50, 200), getRandomInt(50, 200), getRandomInt(50, 200)],
                     backgroundColor: [
                         'rgba(255, 99, 132, 1',
                         'rgba(255, 159, 64, 1',
@@ -90,11 +83,11 @@ class DoughnutChart extends Component {
 }
 
 
-const mapStateToProps = state => {
-    return {
-        categories: state.category.categories[0]
-    }
-}
+// const mapStateToProps = state => {
+//     return {
+//         categories: state.category.categories.map(category => category.amount)
+//     }
+// }
 
-export default connect(mapStateToProps, {fetchCategories})(DoughnutChart)
+export default connect(null, {fetchCategories})(DoughnutChart)
 

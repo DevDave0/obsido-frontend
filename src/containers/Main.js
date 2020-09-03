@@ -31,13 +31,15 @@ const Main = (props) => {
     return (
         <div>
 
-            <Header toggleMenu={toggleMenu} />
+            <Header 
+                toggleMenu={toggleMenu} 
+                logOut={logOut}
+            />
             <div className='ui attached pushable' style={{height: '100vh'}}>
                 <Sidebar toggleMenu={toggle} />
                 <div className={classes}>
                     <h1>MainContainer</h1>
                     <ChartContainer />
-                    <button onClick={(e) => logOut(e) } >Log Out</button>
 
                 </div>
 

@@ -21,6 +21,12 @@ const CategoryForm = (props) => {
         setCategory(data.value)
     }
 
+    const clearState = () => {
+        setCategory('')
+        setDescription('')
+        setAmount(0)
+    }
+
     const submit = (e) => {
         e.preventDefault();
         setAmount()
@@ -52,6 +58,7 @@ const CategoryForm = (props) => {
             let category = data.category.data.attributes
             props.addCategory(category)
         })
+        clearState();
     }
 
     return (
@@ -69,7 +76,7 @@ const CategoryForm = (props) => {
                         <div className="ui pointing below label">
                             Please enter the amount of money
                         </div>
-                        
+
                         <Form.Input fluid icon='dollar sign' iconPosition='left' placeholder='Amount' onChange={(e) => setAmount(e.target.value)} value={amount} type='text' />
                         <br></br>
 

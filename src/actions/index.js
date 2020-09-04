@@ -69,3 +69,9 @@ export const fetchCategories = () => {
         })
     }
 }
+
+export const logCategoryIndex = (index) => {
+    return (dispatch) => {
+        dispatch({type: "LOG_CATEGORY_INDEX", index})
+    }
+}

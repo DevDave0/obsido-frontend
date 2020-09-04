@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import {Doughnut} from 'react-chartjs-2'
 import { Segment, Header, Icon } from 'semantic-ui-react'
+import {connect} from 'react-redux';
+import { logCategoryIndex } from '../actions/index'
 
 // Ill have to do a fetch for all categories and then find the ones that match the user Id
 
@@ -47,7 +49,7 @@ class DoughnutChart extends Component {
             <Segment>
             <Doughnut 
                 data={data}
-                onElementsClick={element => {console.log(element[0])}}
+                onElementsClick={element => {this.props.logCategoryIndex(element[0]._index)}}
                 width={200}
                 height={400}
                 options={{
@@ -88,5 +90,5 @@ class DoughnutChart extends Component {
 
 }
 
-export default DoughnutChart
+export default connect(null, {logCategoryIndex})(DoughnutChart);
 

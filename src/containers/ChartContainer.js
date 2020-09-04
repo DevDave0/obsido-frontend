@@ -10,6 +10,9 @@ import BillsChart from './BillsChart'
 import ShoppingChart from './ShoppingChart'
 import MiscChart from './MiscChart'
 
+// Here we want to do conditional rendering of when one of the main categories are clicked, action fires, changes state to a specific index, use that index in the redux state to display
+// the correct chart. Send down the amount as a prop, use that amount as a max in spending, find a way to randomize color choices. 
+
 class ChartContainer extends Component {
 
     componentDidMount() {

@@ -49,7 +49,14 @@ class DoughnutChart extends Component {
             <Segment>
             <Doughnut 
                 data={data}
-                onElementsClick={element => {this.props.logCategoryIndex(element[0]._index)}}
+                onElementsClick={element => {
+                    if (element[0] === undefined){
+                        console.log('Please click an event!')
+                    } else {
+                        this.props.logCategoryIndex(element[0]._index)
+                    }
+                }}
+                // (element => {this.props.logCategoryIndex(element[0]._index)})
                 width={200}
                 height={400}
                 options={{

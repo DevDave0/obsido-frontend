@@ -1,6 +1,5 @@
-let initialState = {
-    index: 7
-}
+let initialState = 7
+
 // index of 7 will be the toggle back to the top category graph
 
 const categoryIndexReducer = (state = initialState, action) => {

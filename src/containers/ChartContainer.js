@@ -13,6 +13,7 @@ import MiscChart from './MiscChart'
 // Here we want to do conditional rendering of when one of the main categories are clicked, action fires, changes state to a specific index, use that index in the redux state to display
 // the correct chart. Send down the amount as a prop, use that amount as a max in spending, find a way to randomize color choices. 
 
+
 class ChartContainer extends Component {
 
     componentDidMount() {
@@ -20,10 +21,12 @@ class ChartContainer extends Component {
     }
 
     render(){
+
+
         return (
                 <div className='top-chart-container'>
 
-                    <MainChart 
+                {this.props.categoryIndex === 7 ? <MainChart 
                         allCategories={this.props.categories}
                         stockAmount={this.props.stockAmount}
                         cryptoAmount={this.props.cryptoAmount}
@@ -31,73 +34,72 @@ class ChartContainer extends Component {
                         billsAmount={this.props.billsAmount}
                         shoppingAmount={this.props.shoppingAmount}
                         miscAmount={this.props.miscAmount}
-                    />
-
-                    {/* <StockChart 
-                        allCategories={this.props.categories}
-                        stockAmount={this.props.stockAmount}
-                        cryptoAmount={this.props.cryptoAmount}
-                        foodAmount={this.props.foodAmount}
-                        billsAmount={this.props.billsAmount}
-                        shoppingAmount={this.props.shoppingAmount}
-                        miscAmount={this.props.miscAmount}
-                    />
-
-                    <CryptoChart 
-                        allCategories={this.props.categories}
-                        stockAmount={this.props.stockAmount}
-                        cryptoAmount={this.props.cryptoAmount}
-                        foodAmount={this.props.foodAmount}
-                        billsAmount={this.props.billsAmount}
-                        shoppingAmount={this.props.shoppingAmount}
-                        miscAmount={this.props.miscAmount}
-                    />
-
-                    <FoodChart 
-                        allCategories={this.props.categories}
-                        stockAmount={this.props.stockAmount}
-                        cryptoAmount={this.props.cryptoAmount}
-                        foodAmount={this.props.foodAmount}
-                        billsAmount={this.props.billsAmount}
-                        shoppingAmount={this.props.shoppingAmount}
-                        miscAmount={this.props.miscAmount}
-                    />
-
-                    <BillsChart 
-                        allCategories={this.props.categories}
-                        stockAmount={this.props.stockAmount}
-                        cryptoAmount={this.props.cryptoAmount}
-                        foodAmount={this.props.foodAmount}
-                        billsAmount={this.props.billsAmount}
-                        shoppingAmount={this.props.shoppingAmount}
-                        miscAmount={this.props.miscAmount}
-                    />
-
-                    <ShoppingChart 
-                        allCategories={this.props.categories}
-                        stockAmount={this.props.stockAmount}
-                        cryptoAmount={this.props.cryptoAmount}
-                        foodAmount={this.props.foodAmount}
-                        billsAmount={this.props.billsAmount}
-                        shoppingAmount={this.props.shoppingAmount}
-                        miscAmount={this.props.miscAmount}
-                    />
-
-                    <MiscChart 
-                        allCategories={this.props.categories}
-                        stockAmount={this.props.stockAmount}
-                        cryptoAmount={this.props.cryptoAmount}
-                        foodAmount={this.props.foodAmount}
-                        billsAmount={this.props.billsAmount}
-                        shoppingAmount={this.props.shoppingAmount}
-                        miscAmount={this.props.miscAmount}
-                    /> */}
+                    /> :
+                    this.props.categoryIndex === 0 ? <StockChart 
+                    allCategories={this.props.categories}
+                    stockAmount={this.props.stockAmount}
+                    cryptoAmount={this.props.cryptoAmount}
+                    foodAmount={this.props.foodAmount}
+                    billsAmount={this.props.billsAmount}
+                    shoppingAmount={this.props.shoppingAmount}
+                    miscAmount={this.props.miscAmount}
+                /> : 
+                    this.props.categoryIndex === 1 ? <CryptoChart 
+                    allCategories={this.props.categories}
+                    stockAmount={this.props.stockAmount}
+                    cryptoAmount={this.props.cryptoAmount}
+                    foodAmount={this.props.foodAmount}
+                    billsAmount={this.props.billsAmount}
+                    shoppingAmount={this.props.shoppingAmount}
+                    miscAmount={this.props.miscAmount}
+                /> : 
+                    this.props.categoryIndex === 2 ? <FoodChart 
+                    allCategories={this.props.categories}
+                    stockAmount={this.props.stockAmount}
+                    cryptoAmount={this.props.cryptoAmount}
+                    foodAmount={this.props.foodAmount}
+                    billsAmount={this.props.billsAmount}
+                    shoppingAmount={this.props.shoppingAmount}
+                    miscAmount={this.props.miscAmount}
+                /> : 
+                    this.props.categoryIndex === 3 ? <BillsChart 
+                    allCategories={this.props.categories}
+                    stockAmount={this.props.stockAmount}
+                    cryptoAmount={this.props.cryptoAmount}
+                    foodAmount={this.props.foodAmount}
+                    billsAmount={this.props.billsAmount}
+                    shoppingAmount={this.props.shoppingAmount}
+                    miscAmount={this.props.miscAmount}
+                /> : 
+                    this.props.categoryIndex === 4 ? <ShoppingChart 
+                    allCategories={this.props.categories}
+                    stockAmount={this.props.stockAmount}
+                    cryptoAmount={this.props.cryptoAmount}
+                    foodAmount={this.props.foodAmount}
+                    billsAmount={this.props.billsAmount}
+                    shoppingAmount={this.props.shoppingAmount}
+                    miscAmount={this.props.miscAmount}
+                /> :
+                    this.props.categoryIndex === 5 ? <MiscChart 
+                    allCategories={this.props.categories}
+                    stockAmount={this.props.stockAmount}
+                    cryptoAmount={this.props.cryptoAmount}
+                    foodAmount={this.props.foodAmount}
+                    billsAmount={this.props.billsAmount}
+                    shoppingAmount={this.props.shoppingAmount}
+                    miscAmount={this.props.miscAmount}
+                /> : 
+                null
+                }
 
                 </div>
         )
     }
     
 }
+
+
+
 
 const mapStateToProps = state => {
     return {
@@ -136,7 +138,9 @@ const mapStateToProps = state => {
             if(category.name === 'Misc'){
                 return category.amount
             }
-        }).map(category => category.amount)
+        }).map(category => category.amount),
+
+        categoryIndex: state.categoryIndex
     }
 }
 

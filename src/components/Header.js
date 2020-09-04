@@ -10,7 +10,7 @@ const Header = (props) => {
             </span>
 
             <span className='item link grey right' onClick={(e)=> props.logOut(e)}>
-                <i class="power off icon"></i>
+                <i className="power off icon"></i>
                 Logout
             </span>
 

@@ -19,10 +19,12 @@
 
 .main-chart-container-form {
     /* border: 5px solid green; */
+    /* text-align: center; */
+    height: 100px;
     width: 300px;
     margin: 0;
     float: right;    
-    padding: 10px;
+    padding-top: 50px;
     /* flex-grow: 1; */
     /* justify-content: flex-end; */
     

@@ -1,8 +1,14 @@
 import React, {Component} from 'react'
-import CategoryForm from '../components/CategoryForm'
-import DoughnutChart from '../components/DoughnutChart'
 import { fetchCategories } from '../actions/index'
 import {connect} from 'react-redux';
+
+import MainChart from './MainChart'
+import StockChart from './StockChart'
+import CryptoChart from './CryptoChart'
+import FoodChart from './FoodChart'
+import BillsChart from './BillsChart'
+import ShoppingChart from './ShoppingChart'
+import MiscChart from './MiscChart'
 
 class ChartContainer extends Component {
 
@@ -12,19 +18,79 @@ class ChartContainer extends Component {
 
     render(){
         return (
-            <div className='main-chart-container'>
-                <h1>ChartContainer</h1>
-                <DoughnutChart 
-                    allCategories={this.props.categories}
-                    stockAmount={this.props.stockAmount}
-                    cryptoAmount={this.props.cryptoAmount}
-                    foodAmount={this.props.foodAmount}
-                    billsAmount={this.props.billsAmount}
-                    shoppingAmount={this.props.shoppingAmount}
-                    miscAmount={this.props.miscAmount}
-                />
-                <CategoryForm />
-            </div>
+                <div className='top-chart-container'>
+
+                    <MainChart 
+                        allCategories={this.props.categories}
+                        stockAmount={this.props.stockAmount}
+                        cryptoAmount={this.props.cryptoAmount}
+                        foodAmount={this.props.foodAmount}
+                        billsAmount={this.props.billsAmount}
+                        shoppingAmount={this.props.shoppingAmount}
+                        miscAmount={this.props.miscAmount}
+                    />
+
+                    {/* <StockChart 
+                        allCategories={this.props.categories}
+                        stockAmount={this.props.stockAmount}
+                        cryptoAmount={this.props.cryptoAmount}
+                        foodAmount={this.props.foodAmount}
+                        billsAmount={this.props.billsAmount}
+                        shoppingAmount={this.props.shoppingAmount}
+                        miscAmount={this.props.miscAmount}
+                    />
+
+                    <CryptoChart 
+                        allCategories={this.props.categories}
+                        stockAmount={this.props.stockAmount}
+                        cryptoAmount={this.props.cryptoAmount}
+                        foodAmount={this.props.foodAmount}
+                        billsAmount={this.props.billsAmount}
+                        shoppingAmount={this.props.shoppingAmount}
+                        miscAmount={this.props.miscAmount}
+                    />
+
+                    <FoodChart 
+                        allCategories={this.props.categories}
+                        stockAmount={this.props.stockAmount}
+                        cryptoAmount={this.props.cryptoAmount}
+                        foodAmount={this.props.foodAmount}
+                        billsAmount={this.props.billsAmount}
+                        shoppingAmount={this.props.shoppingAmount}
+                        miscAmount={this.props.miscAmount}
+                    />
+
+                    <BillsChart 
+                        allCategories={this.props.categories}
+                        stockAmount={this.props.stockAmount}
+                        cryptoAmount={this.props.cryptoAmount}
+                        foodAmount={this.props.foodAmount}
+                        billsAmount={this.props.billsAmount}
+                        shoppingAmount={this.props.shoppingAmount}
+                        miscAmount={this.props.miscAmount}
+                    />
+
+                    <ShoppingChart 
+                        allCategories={this.props.categories}
+                        stockAmount={this.props.stockAmount}
+                        cryptoAmount={this.props.cryptoAmount}
+                        foodAmount={this.props.foodAmount}
+                        billsAmount={this.props.billsAmount}
+                        shoppingAmount={this.props.shoppingAmount}
+                        miscAmount={this.props.miscAmount}
+                    />
+
+                    <MiscChart 
+                        allCategories={this.props.categories}
+                        stockAmount={this.props.stockAmount}
+                        cryptoAmount={this.props.cryptoAmount}
+                        foodAmount={this.props.foodAmount}
+                        billsAmount={this.props.billsAmount}
+                        shoppingAmount={this.props.shoppingAmount}
+                        miscAmount={this.props.miscAmount}
+                    /> */}
+
+                </div>
         )
     }
     

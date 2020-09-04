@@ -29,7 +29,7 @@ const Main = (props) => {
     }
 
     return (
-        <div >
+        <div>
 
             <Header 
                 toggleMenu={toggleMenu} 

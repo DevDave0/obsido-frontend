@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { addCategory } from '../actions/index'
 import {connect} from 'react-redux';
 import {CATEGORIES} from '../data';
-import { Form, Grid, Header, Message, Segment, Icon, Dropdown } from 'semantic-ui-react'
+import { Form, Grid, Header, Segment, Icon, Dropdown } from 'semantic-ui-react'
 
 const baseURL = 'http://localhost:3000/'
 const categoryURL = baseURL + 'categories'
@@ -66,14 +66,17 @@ const CategoryForm = (props) => {
                     <form onSubmit={submit}>
                         <Segment >
                         
-                        <div class="ui pointing below label">
+                        <div className="ui pointing below label">
                             Please enter the amount of money
                         </div>
+                        
                         <Form.Input fluid icon='dollar sign' iconPosition='left' placeholder='Amount' onChange={(e) => setAmount(e.target.value)} value={amount} type='text' />
                         <br></br>
-                        <div class="ui pointing below label">
+
+                        <div className="ui pointing below label">
                             Please choose a category
                         </div>
+
                         <Dropdown 
                             placeholder='Category'
                             fluid
@@ -83,17 +86,12 @@ const CategoryForm = (props) => {
                         />
                         <br></br>
 
-                        <div class="ui pointing below label">
+                        <div className="ui pointing below label">
                             Write a memo!
                         </div>
-
                         <Form.Input fluid icon='book' iconPosition='left' placeholder='Description' onChange={(e) => setDescription(e.target.value)} value={description} type='text' />
-
                         <br></br>
-
-                        {/* <Form.Input type='submit'/> */}
-                        <input type="submit" value="Submit" class="ui fluid teal button big"/>
-                        {/* <div className='ui fluid large teal submit button' type='submit'>Submit</div> */}
+                        <input type="submit" value="Submit" className="ui fluid teal button big"/>
                         <br></br>
                         </Segment>
                     </form>
@@ -101,19 +99,7 @@ const CategoryForm = (props) => {
                 </Grid.Column>
 
             </Grid>
-            {/* <form className='new-category-form' onSubmit={submit} >
-                <input placeholder="$Amount" type='text' value={amount} onChange={(e) => setAmount(e.target.value)} />
-                <label>
-                    Pick a Category
-                </label>
-                    <select value={category} onChange={(e) => setCategory(e.target.value)} >
-                        {
-                            CATEGORIES.map(category => <option key={category}>{category}</option>)
-                        }
-                    </select>
-                <input placeholder="Description" type='text' value={description} onChange={(e) => setDescription(e.target.value)} />
-                <input type='submit' value='Add category' />
-            </form> */}
+
         </div>
     )
 }

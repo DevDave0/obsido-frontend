@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {Doughnut} from 'react-chartjs-2'
+import { Segment, Header, Icon } from 'semantic-ui-react'
 
 // Ill have to do a fetch for all categories and then find the ones that match the user Id
 
@@ -16,7 +17,9 @@ class DoughnutChart extends Component {
             labels: ['Stocks', 'Cryptos', 'Food', 'Bills', 'Shopping', 'Misc'],
             datasets: [
                 {
-                    label: 'Percentage',
+                    label: 'Amount',
+                    hoverBackgroundColor: "rgba(51, 82, 73, 0.87)",
+                    hoverBorderColor: "white",
                     data: [
                         this.props.stockAmount.reduce((a,b)=> a + b, 0), 
                         this.props.cryptoAmount.reduce((a,b)=> a + b, 0), 
@@ -37,6 +40,11 @@ class DoughnutChart extends Component {
         }
     return (
         <div className='main-chart-container-chart' >
+            <Header as='h2' color='teal' textAlign='center'>
+                <Icon name='dollar sign' />
+                    Expenditures
+            </Header>
+            <Segment>
             <Doughnut 
                 data={data}
                 onElementsClick={element => {console.log(element[0])}}
@@ -62,17 +70,18 @@ class DoughnutChart extends Component {
                         },
 
                     },
-                    layout: {
-                        padding: {
-                            left: -10,
-                            right: -10,
-                            bottom: 0,
-                            top: 0
-                            }
-                        }
+                    // layout: {
+                    //     padding: {
+                    //         left: -10,
+                    //         right: -10,
+                    //         bottom: 0,
+                    //         top: 0
+                    //         }
+                    //     }
                     // onClick: (e, element) => {alert(e.target)}
                 }}
             />
+            </Segment>
         </div>
     )
     }

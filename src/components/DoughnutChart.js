@@ -46,7 +46,7 @@ class DoughnutChart extends Component {
                 <Icon name='dollar sign' />
                     Expenditures
             </Header>
-            <Segment>
+            <Segment raised>
             <Doughnut 
                 data={data}
                 onElementsClick={element => {

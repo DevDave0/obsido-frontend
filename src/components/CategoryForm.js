@@ -71,7 +71,7 @@ const CategoryForm = (props) => {
                         Add a category
                     </Header>
                     <form onSubmit={submit}>
-                        <Segment >
+                        <Segment raised>
                         
                         <div className="ui pointing below label">
                             Please enter the amount of money

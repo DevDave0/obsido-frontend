@@ -1,7 +1,7 @@
 import React from 'react'
 import CategoryForm from '../components/CategoryForm'
 import DoughnutChart from '../components/DoughnutChart'
-import { Segment, Divider, Grid } from 'semantic-ui-react'
+import { Segment, Header, Grid, Image } from 'semantic-ui-react'
 
 const MainChart = (props) => {
 
@@ -12,8 +12,30 @@ const MainChart = (props) => {
             <Grid columns={2} stackable textAlign='center'>
                 {/* <Divider vertical>Or    </Divider> */}
                     <Grid.Row verticalAlign='middle'>
-                            <Grid.Column>
-                                <DoughnutChart 
+                            <Grid.Column className='column-left'>
+                                {(props.allCategories.length > 0) ? 
+                                    <DoughnutChart 
+                                        allCategories={props.allCategories}
+                                        stockAmount={props.stockAmount}
+                                        cryptoAmount={props.cryptoAmount}
+                                        foodAmount={props.foodAmount}
+                                        billsAmount={props.billsAmount}
+                                        shoppingAmount={props.shoppingAmount}
+                                        miscAmount={props.miscAmount}
+                                    />
+                                : 
+                                    <Segment placeholder raised loading>
+                                        <Image src='https://react.semantic-ui.com/images/wireframe/paragraph.png' />
+                                        {/* <Header icon>
+                                            <Icon name='chart pie' />
+                                            No information has been entered yet!
+                                        </Header> */}
+                                    </Segment>
+                                }
+
+
+
+                                {/* <DoughnutChart 
                                     allCategories={props.allCategories}
                                     stockAmount={props.stockAmount}
                                     cryptoAmount={props.cryptoAmount}
@@ -21,7 +43,7 @@ const MainChart = (props) => {
                                     billsAmount={props.billsAmount}
                                     shoppingAmount={props.shoppingAmount}
                                     miscAmount={props.miscAmount}
-                                />
+                                /> */}
                             </Grid.Column>
 
                             <Grid.Column>

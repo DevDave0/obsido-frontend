@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { addCategory } from '../actions/index'
 import {connect} from 'react-redux';
 import {CATEGORIES} from '../data';
+import { Form, Grid, Header, Message, Segment, Icon, Select, Dropdown } from 'semantic-ui-react'
 
 const baseURL = 'http://localhost:3000/'
 const categoryURL = baseURL + 'categories'
@@ -14,11 +15,15 @@ const CategoryForm = (props) => {
 
     const [category, setCategory] = useState('Misc')
     const [description, setDescription] = useState('')
-    const [amount, setAmount] = useState(0)
+    const [amount, setAmount] = useState()
+
+    const handleDropdown = (event, data) => {
+        setCategory(data.value)
+    }
 
     const submit = (e) => {
         e.preventDefault();
-        setAmount(0)
+        setAmount()
         setCategory('Misc')
         setDescription('')
 
@@ -51,8 +56,34 @@ const CategoryForm = (props) => {
 
     return (
         <div>
-            <h1>CategoryForm</h1>
-            <form className='new-category-form' onSubmit={submit} >
+
+            <Grid textAlign='center' style={{ height: '100vh' }} verticalAlign='middle'>
+                <Grid.Column style={{ maxWidth: 450 }}>
+                    <Header as='h2' color='teal' textAlign='center'>
+                        <Icon name='check circle' />
+                        Add a category
+                    </Header>
+                    <form onSubmit={submit}>
+                        <Segment >
+
+                        <Form.Input fluid icon='user' iconPosition='left' placeholder='Amount' onChange={(e) => setAmount(e.target.value)} value={amount} type='text' />
+                        <Dropdown 
+                            placeholder='Select a category'
+                            fluid
+                            selection
+                            onChange={handleDropdown}
+                            options={CATEGORIES}
+                        />
+
+                        <Form.Input fluid icon='user' iconPosition='left' placeholder='Description' onChange={(e) => setDescription(e.target.value)} value={description} type='text' />
+                        <Form.Input type='submit'/>
+                        </Segment>
+                    </form>
+
+                </Grid.Column>
+
+            </Grid>
+            {/* <form className='new-category-form' onSubmit={submit} >
                 <input placeholder="$Amount" type='text' value={amount} onChange={(e) => setAmount(e.target.value)} />
                 <label>
                     Pick a Category
@@ -64,7 +95,7 @@ const CategoryForm = (props) => {
                     </select>
                 <input placeholder="Description" type='text' value={description} onChange={(e) => setDescription(e.target.value)} />
                 <input type='submit' value='Add category' />
-            </form>
+            </form> */}
         </div>
     )
 }

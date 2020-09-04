@@ -13,7 +13,6 @@ class ChartContainer extends Component {
     render(){
         return (
             <div>
-                {/* {console.log(this.props.categories)} */}
                 <h1>ChartContainer</h1>
                 <DoughnutChart 
                     allCategories={this.props.categories}
@@ -25,7 +24,6 @@ class ChartContainer extends Component {
                     miscAmount={this.props.miscAmount}
                 />
                 <CategoryForm />
-                {/* <Counter /> */}
             </div>
         )
     }

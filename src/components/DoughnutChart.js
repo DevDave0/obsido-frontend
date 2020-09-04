@@ -12,7 +12,6 @@ class DoughnutChart extends Component {
     // Here I want to input the sections of data with my own category data. 
 
     render(){
-
         let data =  {
             labels: ['Stocks', 'Cryptos', 'Food', 'Bills', 'Shopping', 'Misc'],
             datasets: [
@@ -37,37 +36,40 @@ class DoughnutChart extends Component {
             ]
         }
     return (
-        <div className='chart'>
+        <div className='main-chart-container-chart' >
             <Doughnut 
                 data={data}
                 onElementsClick={element => {console.log(element[0])}}
                 width={200}
-                height={500}
+                height={400}
                 options={{
+                    autoDisplayLegend: true,
                     maintainAspectRatio: false,
                     animation: {
                         animateScale: true
                     },
                     title: {
                         display: true,
-                        text: "Categories",
+                        // text: "Categories",
                         fontSize: 25
                     },
                     legend: {
-                        display: true,
+                        display: (this.props.allCategories.length > 0) ? true : false ,
                         position: "left",
+                        align: "center",
                         labels: {
-                            fontSize: 25
+                            fontSize: 30
                         },
-                        // layout: {
-                        //     padding: {
-                        //         left: 0,
-                        //         right: 0,
-                        //         bottom: 0,
-                        //         top: 0
-                        //     }
-                        // }
-                    }
+
+                    },
+                    layout: {
+                        padding: {
+                            left: -10,
+                            right: -10,
+                            bottom: 0,
+                            top: 0
+                            }
+                        }
                     // onClick: (e, element) => {alert(e.target)}
                 }}
             />

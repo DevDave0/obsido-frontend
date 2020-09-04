@@ -12,7 +12,7 @@ class ChartContainer extends Component {
 
     render(){
         return (
-            <div>
+            <div className='main-chart-container'>
                 <h1>ChartContainer</h1>
                 <DoughnutChart 
                     allCategories={this.props.categories}

@@ -29,11 +29,5 @@ export const CATEGORIES = [
         text: 'Misc',
         value: 'Misc',
       },
-    // 'Stocks',
-    // 'Crypto',
-    // 'Food',
-    // 'Bills',
-    // 'Shopping',
-    // 'Misc'
 ]
 

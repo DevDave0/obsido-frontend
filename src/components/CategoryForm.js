@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { addCategory } from '../actions/index'
 import {connect} from 'react-redux';
 import {CATEGORIES} from '../data';
-import { Form, Grid, Header, Message, Segment, Icon, Select, Dropdown } from 'semantic-ui-react'
+import { Form, Grid, Header, Message, Segment, Icon, Dropdown } from 'semantic-ui-react'
 
 const baseURL = 'http://localhost:3000/'
 const categoryURL = baseURL + 'categories'
@@ -55,28 +55,46 @@ const CategoryForm = (props) => {
     }
 
     return (
-        <div>
+        <div className='main-chart-container-form'>
 
-            <Grid textAlign='center' style={{ height: '100vh' }} verticalAlign='middle'>
+            <Grid textAlign='center' style={{ height: '50vh' }} verticalAlign='middle'>
                 <Grid.Column style={{ maxWidth: 450 }}>
                     <Header as='h2' color='teal' textAlign='center'>
-                        <Icon name='check circle' />
+                        <Icon name='plus circle' />
                         Add a category
                     </Header>
                     <form onSubmit={submit}>
                         <Segment >
-
-                        <Form.Input fluid icon='user' iconPosition='left' placeholder='Amount' onChange={(e) => setAmount(e.target.value)} value={amount} type='text' />
+                        
+                        <div class="ui pointing below label">
+                            Please enter the amount of money
+                        </div>
+                        <Form.Input fluid icon='dollar sign' iconPosition='left' placeholder='Amount' onChange={(e) => setAmount(e.target.value)} value={amount} type='text' />
+                        <br></br>
+                        <div class="ui pointing below label">
+                            Please choose a category
+                        </div>
                         <Dropdown 
-                            placeholder='Select a category'
+                            placeholder='Category'
                             fluid
                             selection
                             onChange={handleDropdown}
                             options={CATEGORIES}
                         />
+                        <br></br>
 
-                        <Form.Input fluid icon='user' iconPosition='left' placeholder='Description' onChange={(e) => setDescription(e.target.value)} value={description} type='text' />
-                        <Form.Input type='submit'/>
+                        <div class="ui pointing below label">
+                            Write a memo!
+                        </div>
+
+                        <Form.Input fluid icon='book' iconPosition='left' placeholder='Description' onChange={(e) => setDescription(e.target.value)} value={description} type='text' />
+
+                        <br></br>
+
+                        {/* <Form.Input type='submit'/> */}
+                        <input type="submit" value="Submit" class="ui fluid teal button big"/>
+                        {/* <div className='ui fluid large teal submit button' type='submit'>Submit</div> */}
+                        <br></br>
                         </Segment>
                     </form>
 

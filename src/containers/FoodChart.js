@@ -1,5 +1,5 @@
 import React from 'react'
-import CategoryForm from '../components/CategoryForm'
+import FoodForm from '../components/FoodForm'
 import FoodDoughnutChart from '../components/FoodDoughnutChart'
 import { Segment, Grid, Image } from 'semantic-ui-react'
 
@@ -31,7 +31,7 @@ const FoodChart = (props) => {
                             </Grid.Column>
 
                             <Grid.Column>
-                                <CategoryForm />
+                                <FoodForm />
                             </Grid.Column>
                         
                     </Grid.Row>

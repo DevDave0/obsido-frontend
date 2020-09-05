@@ -6,25 +6,30 @@ class FoodDoughnutChart extends Component {
 
     render(){
 
+        function numberWithCommas(x) {
+            return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        }
+        
+
         let data =  {
-            labels: ['Stocks', 'Cryptos', 'Food', 'Bills', 'Shopping', 'Misc'],
+            labels: ['Food', 'Cryptos', 'Food', 'Bills', 'Shopping', 'Misc'],
             datasets: [
                 {
                     label: 'Amount',
                     hoverBackgroundColor: "rgba(51, 82, 73, 0.87)",
                     hoverBorderColor: "white",
                     data: [
-                        100, 
-                        100, 
-                        100, 
-                        100, 
-                        100, 
-                        100,
+                        this.props.foodAmount.reduce((a,b)=> a + b, 0), 
+                        // 100, 
+                        // 100, 
+                        // 100, 
+                        // 100, 
+                        // 100,
                     ],
                     backgroundColor: [
+                        'rgba(235, 235, 70, 1', 
                         'rgba(255, 99, 132, 1',
                         'rgba(255, 159, 64, 1',
-                        'rgba(235, 235, 70, 1', 
                         'rgba(70, 235, 70, 1',  
                         'rgba(54, 162, 235, 1', 
                         'rgba(153, 102, 255, 1',
@@ -33,10 +38,6 @@ class FoodDoughnutChart extends Component {
             ]
         }
 
-        function numberWithCommas(x) {
-            return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-        }
-        
     return (
         <div className='main-chart-container-chart' >
             <Header as='h2' color='teal' textAlign='center'>
@@ -46,14 +47,6 @@ class FoodDoughnutChart extends Component {
             <Segment raised>
             <Doughnut 
                 data={data}
-                onElementsClick={element => {
-                    if (element[0] === undefined){
-                        console.log('Please click an event!')
-                    } else {
-                        this.props.logCategoryIndex(element[0]._index)
-                    }
-                }}
-                // (element => {this.props.logCategoryIndex(element[0]._index)})
                 width={200}
                 height={400}
                 options={{
@@ -76,6 +69,21 @@ class FoodDoughnutChart extends Component {
                         },
 
                     },
+                    tooltips: {
+                        callbacks: {
+                            label: function(tooltipItem, data){
+                                let dataset = data.datasets[tooltipItem.datasetIndex];
+                                let meta = dataset._meta[Object.keys(dataset._meta)[0]];
+                                let total = meta.total;
+                                let currentValue = dataset.data[tooltipItem.index];
+                                let percentage = parseFloat((currentValue/total*100).toFixed(1));
+                                return currentValue + ' (' + percentage + '%)';
+                            },
+                            title: function(tooltipItem, data) {
+                                return data.labels[tooltipItem[0].index];
+                            }
+                        }
+                    }
                 }}
             />
             </Segment>

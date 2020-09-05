@@ -88,15 +88,21 @@ class DoughnutChart extends Component {
                         },
 
                     },
-                    // layout: {
-                    //     padding: {
-                    //         left: -10,
-                    //         right: -10,
-                    //         bottom: 0,
-                    //         top: 0
-                    //         }
-                    //     }
-                    // onClick: (e, element) => {alert(e.target)}
+                    tooltips: {
+                        callbacks: {
+                            label: function(tooltipItem, data){
+                                let dataset = data.datasets[tooltipItem.datasetIndex];
+                                let meta = dataset._meta[Object.keys(dataset._meta)[0]];
+                                let total = meta.total;
+                                let currentValue = dataset.data[tooltipItem.index];
+                                let percentage = parseFloat((currentValue/total*100).toFixed(1));
+                                return currentValue + ' (' + percentage + '%)';
+                            },
+                            title: function(tooltipItem, data) {
+                                return data.labels[tooltipItem[0].index];
+                            }
+                        }
+                    }
                 }}
             />
             </Segment>

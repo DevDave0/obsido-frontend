@@ -75,11 +75,11 @@ class FoodDoughnutChart extends Component {
                     autoDisplayLegend: true,
                     maintainAspectRatio: false,
                     animation: {
-                        animateScale: true
+                        // animateScale: true
                     },
                     title: {
                         display: true,
-                        text: (`$${numberWithCommas(this.props.foodAmount.reduce((a,b)=> a + b, 0))} spent`),
+                        text: (`$${numberWithCommas(this.props.foodAmount.reduce((a,b)=> a + b, 0))} spent on food`),
                         fontSize: 25
                     },
                     legend: {

@@ -11,10 +11,14 @@ import { logCategoryIndex } from '../actions/index'
 // }
 // ^^^This function generates random numbers used for testing my chart
 
+
 class DoughnutChart extends Component {
     // Here I want to input the sections of data with my own category data. 
 
+
     render(){
+
+
         let data =  {
             labels: ['Stocks', 'Cryptos', 'Food', 'Bills', 'Shopping', 'Misc'],
             datasets: [
@@ -40,6 +44,11 @@ class DoughnutChart extends Component {
                 }
             ]
         }
+
+        function numberWithCommas(x) {
+            return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        }
+        
     return (
         <div className='main-chart-container-chart' >
             <Header as='h2' color='teal' textAlign='center'>
@@ -67,7 +76,7 @@ class DoughnutChart extends Component {
                     },
                     title: {
                         display: true,
-                        // text: "Categories",
+                        text: (`$${numberWithCommas(this.props.allCategories.map(category => category.amount).reduce((a,b)=> a + b, 0))} spent`),
                         fontSize: 25
                     },
                     legend: {

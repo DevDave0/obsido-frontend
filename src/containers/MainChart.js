@@ -10,7 +10,6 @@ const MainChart = (props) => {
         {/* <h1>ChartContainer</h1> */}
         <Segment raised>
             <Grid columns={2} stackable textAlign='center'>
-                {/* <Divider vertical>Or    </Divider> */}
                     <Grid.Row verticalAlign='middle'>
                             <Grid.Column className='column-left'>
                                 {(props.allCategories.length > 0) ? 

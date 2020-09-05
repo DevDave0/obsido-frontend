@@ -12,12 +12,19 @@ const FoodForm = (props) => {
     const [description, setDescription] = useState('')
     const [amount, setAmount] = useState()
 
+    function numberWithCommas(x) {
+        return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    }
+    
+
 
     const foodCategoryId = props.allCategories.filter(category => {
         if (category.name === "Food"){
             return category
         }
     })[0].id
+
+    const foodAmountLeft = numberWithCommas(props.foodAmount.reduce((a,b)=> a + b, 0))
 
 
     const clearState = () => {
@@ -56,7 +63,7 @@ const FoodForm = (props) => {
     }
 
     return (
-        <div className='main-chart-container-form'>
+        <div className='food-chart-container-form'>
 
             <Grid textAlign='center' style={{ height: '50vh' }} verticalAlign='middle'>
                 <Grid.Column style={{ maxWidth: 450 }}>
@@ -66,6 +73,11 @@ const FoodForm = (props) => {
                     </Header>
                     <form onSubmit={submit}>
                         <Segment raised>
+                        <div className="ui label"> 
+                            {`$${foodAmountLeft} in food money`}
+                        </div>
+                        <br></br>
+                        <br></br>
 
                         <div className="ui pointing below label">
                             Please input a name.

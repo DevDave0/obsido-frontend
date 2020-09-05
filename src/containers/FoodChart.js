@@ -28,6 +28,7 @@ const FoodChart = (props) => {
                             <Grid.Column>
                                 <FoodForm 
                                     allCategories={props.allCategories}
+                                    foodAmount={props.foodAmount}
                                 />
                             </Grid.Column>
                         

@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
-import {CATEGORIES} from '../data';
-import { Form, Grid, Header, Segment, Icon, Dropdown } from 'semantic-ui-react'
+import { Form, Grid, Header, Segment, Icon } from 'semantic-ui-react'
 
 const baseURL = 'http://localhost:3000/'
 const subcategoryURL = baseURL + 'sub_categories'
@@ -9,16 +8,20 @@ const subcategoryURL = baseURL + 'sub_categories'
 
 const FoodForm = (props) => {
 
-    const [category, setCategory] = useState('Misc')
+    const [name, setName] = useState('')
     const [description, setDescription] = useState('')
     const [amount, setAmount] = useState()
 
-    const handleDropdown = (event, data) => {
-        setCategory(data.value)
-    }
+
+    const foodCategoryId = props.allCategories.filter(category => {
+        if (category.name === "Food"){
+            return category
+        }
+    })[0].id
+
 
     const clearState = () => {
-        setCategory('')
+        setName('')
         setDescription('')
         setAmount(0)
     }
@@ -26,7 +29,7 @@ const FoodForm = (props) => {
     const submit = (e) => {
         e.preventDefault();
         setAmount()
-        setCategory('Misc')
+        setName('')
         setDescription('')
 
         let options = {
@@ -35,18 +38,19 @@ const FoodForm = (props) => {
                 'Content-Type' : "application/json"
             },
             body: JSON.stringify({
-                name: category,
+                name: name,
                 amount: amount,
                 description: description,
-                user_id: localStorage.token
+                category_id: foodCategoryId
             })
         }
 
         fetch(subcategoryURL, options)
         .then(resp => resp.json())
         .then(data => {
-            let category = data.category.data.attributes
-            props.addCategory(category)
+            // let category = data.category.data.attributes
+            // props.addCategory(category)
+            console.log(data)
         })
         clearState();
     }
@@ -62,25 +66,20 @@ const FoodForm = (props) => {
                     </Header>
                     <form onSubmit={submit}>
                         <Segment raised>
+
+                        <div className="ui pointing below label">
+                            Please input a name.
+                        </div>
+                        <Form.Input fluid icon='edit' iconPosition='left' placeholder='Name' onChange={(e) => setAmount(e.target.value)} value={amount} type='text' />
+
+                        <br></br>
+
                         
                         <div className="ui pointing below label">
-                            Please enter the amount of money
+                            Please enter the amount of money spent.
                         </div>
 
                         <Form.Input fluid icon='dollar sign' iconPosition='left' placeholder='Amount' onChange={(e) => setAmount(e.target.value)} value={amount} type='text' />
-                        <br></br>
-
-                        <div className="ui pointing below label">
-                            Please choose a category
-                        </div>
-
-                        <Dropdown 
-                            placeholder='Category'
-                            fluid
-                            selection
-                            onChange={handleDropdown}
-                            options={CATEGORIES}
-                        />
                         <br></br>
 
                         <div className="ui pointing below label">

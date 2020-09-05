@@ -15,12 +15,7 @@ const FoodChart = (props) => {
                                 {(props.allCategories.length > 0) ? 
                                     <FoodDoughnutChart 
                                         allCategories={props.allCategories}
-                                        stockAmount={props.stockAmount}
-                                        cryptoAmount={props.cryptoAmount}
                                         foodAmount={props.foodAmount}
-                                        billsAmount={props.billsAmount}
-                                        shoppingAmount={props.shoppingAmount}
-                                        miscAmount={props.miscAmount}
                                     />
                                 : 
                                     <Segment placeholder raised loading>
@@ -31,7 +26,9 @@ const FoodChart = (props) => {
                             </Grid.Column>
 
                             <Grid.Column>
-                                <FoodForm />
+                                <FoodForm 
+                                    allCategories={props.allCategories}
+                                />
                             </Grid.Column>
                         
                     </Grid.Row>

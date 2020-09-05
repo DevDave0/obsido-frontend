@@ -89,7 +89,7 @@ export const fetchFoods = () => {
         fetch(subcategoryURL)
         .then(resp => resp.json())
         .then(subcategories => {
-            console.log(subcategories)
+            // console.log(subcategories)
             
             const result = subcategories.filter(subcategory => {
                 if(subcategory.category_id === parseInt(localStorage.foodCategoryId)){

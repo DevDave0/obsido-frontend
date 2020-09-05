@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {Doughnut} from 'react-chartjs-2'
 import { Segment, Header, Icon } from 'semantic-ui-react'
+import {connect} from 'react-redux';
 
 class FoodDoughnutChart extends Component {
 
@@ -9,23 +10,18 @@ class FoodDoughnutChart extends Component {
         function numberWithCommas(x) {
             return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
         }
-        
+
+
+        // ['Food', 'Cryptos', 'Food', 'Bills', 'Shopping', 'Misc']
 
         let data =  {
-            labels: ['Food', 'Cryptos', 'Food', 'Bills', 'Shopping', 'Misc'],
+            labels: (this.props.foodnames),
             datasets: [
                 {
                     label: 'Amount',
                     hoverBackgroundColor: "rgba(51, 82, 73, 0.87)",
                     hoverBorderColor: "white",
-                    data: [
-                        this.props.foodAmount.reduce((a,b)=> a + b, 0), 
-                        // 100, 
-                        // 100, 
-                        // 100, 
-                        // 100, 
-                        // 100,
-                    ],
+                    data: (this.props.foodvalues),
                     backgroundColor: [
                         'rgba(235, 235, 70, 1', 
                         'rgba(255, 99, 132, 1',
@@ -40,6 +36,8 @@ class FoodDoughnutChart extends Component {
 
     return (
         <div className='main-chart-container-chart' >
+            {console.log(this.props.foodvalues)}
+
             <Header as='h2' color='teal' textAlign='center'>
                 <Icon name='dollar sign' />
                     Expenditures
@@ -93,4 +91,12 @@ class FoodDoughnutChart extends Component {
 
 }
 
-export default FoodDoughnutChart;
+const mapStateToProps = state => {
+    return {
+        foodnames: state.food.foods.map(food => food.name),
+        foodvalues: state.food.foods.map(food => food.amount)
+    }
+}
+
+
+export default connect(mapStateToProps)(FoodDoughnutChart);

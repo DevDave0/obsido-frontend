@@ -4,6 +4,7 @@ import userReducer from './userReducer';
 import categoryReducer from './categoryReducer';
 import { combineReducers } from 'redux';
 import categoryIndexReducer from './categoryIndexReducer';
+import foodReducer from './foodReducer';
 
 const rootReducer = combineReducers({
     counter: counterReducer,
@@ -11,6 +12,7 @@ const rootReducer = combineReducers({
     user: userReducer,
     category: categoryReducer,
     categoryIndex: categoryIndexReducer,
+    food: foodReducer,
 })
 
 export default rootReducer

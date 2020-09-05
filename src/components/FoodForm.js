@@ -61,9 +61,10 @@ const FoodForm = (props) => {
             // let category = data.category.data.attributes
             // props.addCategory(category)
 
-            // let foodObject = data.category.data.attributes
-            // props.addFoodName(foodObject)
-            console.log(data.category.data.attributes)
+            let foodObject = data.category.data.attributes
+            props.addFoodName(foodObject)
+            // console.log(data.category.data.relationships.category.data.id)
+            localStorage.foodCategoryId = data.category.data.relationships.category.data.id
         })
         clearState();
     }

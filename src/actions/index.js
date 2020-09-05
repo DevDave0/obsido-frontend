@@ -1,5 +1,6 @@
 const baseURL = 'http://localhost:3000/'
 const categoryURL = baseURL + 'categories'
+const subcategoryURL = baseURL + 'sub_categories'
 
 export const increment = () => {
     return {
@@ -79,5 +80,27 @@ export const logCategoryIndex = (index) => {
 export const addFoodName = (name) => {
     return (dispatch) => {
         dispatch({type: "ADD_FOOD_NAME", name})
+    }
+}
+
+export const fetchFoods = () => {
+    return (dispatch) => {
+        dispatch({ type: "LOADING_FOODS"})
+        fetch(subcategoryURL)
+        .then(resp => resp.json())
+        .then(subcategories => {
+            console.log(subcategories)
+            
+            const result = subcategories.filter(subcategory => {
+                if(subcategory.category_id === parseInt(localStorage.foodCategoryId)){
+                    return subcategory
+                }
+                else 
+                return null
+            })
+            result.forEach(subcategory => {
+                dispatch({type: "ADD_FETCH_FOOD", name: subcategory})
+            })
+        })
     }
 }

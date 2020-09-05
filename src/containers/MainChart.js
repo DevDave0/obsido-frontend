@@ -1,7 +1,7 @@
 import React from 'react'
 import CategoryForm from '../components/CategoryForm'
 import DoughnutChart from '../components/DoughnutChart'
-import { Segment, Header, Grid, Image } from 'semantic-ui-react'
+import { Segment, Grid, Image } from 'semantic-ui-react'
 
 const MainChart = (props) => {
 

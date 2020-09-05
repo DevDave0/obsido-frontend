@@ -75,3 +75,9 @@ export const logCategoryIndex = (index) => {
         dispatch({type: "LOG_CATEGORY_INDEX", index})
     }
 }
+
+export const addFoodName = (name) => {
+    return (dispatch) => {
+        dispatch({type: "ADD_FOOD_NAME", name})
+    }
+}

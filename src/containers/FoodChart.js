@@ -7,7 +7,6 @@ const FoodChart = (props) => {
 
     return (
         <div className='main-chart-container'>
-        <h1>Food</h1>
         <Segment raised>
             <Grid columns={2} stackable textAlign='center'>
                     <Grid.Row verticalAlign='middle'>

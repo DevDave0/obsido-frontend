@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 import { Form, Grid, Header, Segment, Icon } from 'semantic-ui-react'
+import {connect} from 'react-redux';
+import { addFoodName } from '../actions/index'
 
 const baseURL = 'http://localhost:3000/'
 const subcategoryURL = baseURL + 'sub_categories'
@@ -22,7 +24,8 @@ const FoodForm = (props) => {
         if (category.name === "Food"){
             return category
         }
-    })[0].id
+    })
+    // [0].id
 
     const foodAmountLeft = numberWithCommas(props.foodAmount.reduce((a,b)=> a + b, 0))
 
@@ -48,7 +51,7 @@ const FoodForm = (props) => {
                 name: name,
                 amount: amount,
                 description: description,
-                category_id: foodCategoryId
+                category_id: foodCategoryId[0].id
             })
         }
 
@@ -57,7 +60,10 @@ const FoodForm = (props) => {
         .then(data => {
             // let category = data.category.data.attributes
             // props.addCategory(category)
-            console.log(data)
+
+            // let foodObject = data.category.data.attributes
+            // props.addFoodName(foodObject)
+            console.log(data.category.data.attributes)
         })
         clearState();
     }
@@ -82,7 +88,7 @@ const FoodForm = (props) => {
                         <div className="ui pointing below label">
                             Please input a name.
                         </div>
-                        <Form.Input fluid icon='edit' iconPosition='left' placeholder='Name' onChange={(e) => setAmount(e.target.value)} value={amount} type='text' />
+                        <Form.Input fluid icon='edit' iconPosition='left' placeholder='e.g. Lunch, Dinner, Groceries...' onChange={(e) => setName(e.target.value)} value={name} type='text' />
 
                         <br></br>
 
@@ -112,4 +118,4 @@ const FoodForm = (props) => {
     )
 }
 
-export default FoodForm
+export default connect(null, { addFoodName })(FoodForm)

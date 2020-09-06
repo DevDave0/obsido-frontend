@@ -130,11 +130,20 @@ export const clearCategoryIndex = () => {
     }
 }
 
+
+export const clearFood = () => {
+    return (dispatch) => {
+        dispatch({type: "CLEAR_FOOD"})
+    }
+}
+
 export const addFoodName = (name) => {
     return (dispatch) => {
         dispatch({type: "ADD_FOOD_NAME", name})
     }
 }
+
+
 
 export const fetchFoods = () => {
     return (dispatch) => {

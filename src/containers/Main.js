@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import {connect} from 'react-redux';
-import {loggedOut, logoutUser, clearCategory, clearCategoryIndex} from '../actions/index';
+import {loggedOut, logoutUser, clearCategory, clearCategoryIndex, clearFood} from '../actions/index';
 import ChartContainer from './ChartContainer'
 import Header from '../components/Header'
 import Sidebar from '../components/Sidebar'
@@ -22,6 +22,7 @@ const Main = (props) => {
         props.logoutUser(props.user)
         props.clearCategory(props.category)
         props.clearCategoryIndex()
+        props.clearFood()
         localStorage.clear()
     }
 
@@ -56,4 +57,4 @@ const Main = (props) => {
         }
     }
 
-export default connect(mapStateToProps, {loggedOut, logoutUser, clearCategory, clearCategoryIndex})(Main)
+export default connect(mapStateToProps, {loggedOut, logoutUser, clearCategory, clearCategoryIndex, clearFood})(Main)

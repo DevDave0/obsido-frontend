@@ -40,7 +40,9 @@ const Main = (props) => {
             <div className='ui attached pushable' style={{height: '100vh'}}>
                 <Sidebar toggleMenu={toggle} />
                 <div className={classes}>
-                    <h1>MainContainer</h1>
+                    <br></br>
+                    <h1 className='obsido'>Obsido</h1>
+                    <br></br>
                     <ChartContainer />
 
                 </div>

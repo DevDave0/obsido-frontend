@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {Doughnut} from 'react-chartjs-2'
 import { Segment, Header, Icon } from 'semantic-ui-react'
 import {connect} from 'react-redux';
+import { clearCategoryIndex, clearFood } from '../actions/index'
 
 class FoodDoughnutChart extends Component {
 
@@ -133,6 +134,11 @@ class FoodDoughnutChart extends Component {
                 }}
             />
             </Segment>
+            <button className="ui fluid teal button big" onClick={()=> {
+                this.props.clearCategoryIndex()
+                this.props.clearFood()
+
+            }}>Go back to main categories</button>
         </div>
     )
     }
@@ -149,4 +155,4 @@ class FoodDoughnutChart extends Component {
 // }
 
 
-export default connect(null)(FoodDoughnutChart);
+export default connect(null, { clearCategoryIndex, clearFood })(FoodDoughnutChart);

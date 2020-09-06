@@ -57,16 +57,63 @@ export const fetchCategories = () => {
         fetch(categoryURL)
         .then(resp => resp.json())
         .then(categories => {
-            const result = categories.filter(category => {
-                if(category.user_id === parseInt(localStorage.userId)){
+
+            const result = categories.data.filter(category => {
+                if(parseInt(category.relationships.user.data.id) === parseInt(localStorage.userId)){
                     return category
+                } else {
+                    return null
                 }
-                else 
-                return null
             })
+            
+
+            const foodCategories = result.map(category => {
+                if (category.attributes.name === "Food"){
+                    return category.attributes.id
+                } else {
+                    return undefined
+                }
+            })
+
+            const answer = foodCategories.filter(element => {
+                if (element !== undefined){
+                    return element
+                }
+            })
+            // const answer = foodCategories
+
+
+
+
+            console.log(result)
+            console.log(foodCategories)
+            console.log(answer[0])
+
+            const invoke = () =>{
+                if(answer){
+                    localStorage.foodCategoryId = answer[0]
+                } else {
+                    localStorage.foodCategoryId = '100'
+                }
+            }
+
+            invoke();
+            // localStorage.foodCategoryId = answer
+
+            // console.log(foodIds)
+            // const firstFoodId = result.map(category => {
+            //     if(category.attributes.name === 'Food'){
+            //         return category.attributes.id
+            //     }
+            // })
+
+            // console.log(firstFoodId)
+
+
             result.forEach(category => {
-                dispatch({type: "ADD_FETCH_CATEGORY", category: category})
+                dispatch({type: "ADD_FETCH_CATEGORY", category: category.attributes})
             })
+            // console.log(result)
         })
     }
 }
@@ -74,6 +121,12 @@ export const fetchCategories = () => {
 export const logCategoryIndex = (index) => {
     return (dispatch) => {
         dispatch({type: "LOG_CATEGORY_INDEX", index})
+    }
+}
+
+export const clearCategoryIndex = () => {
+    return (dispatch) => {
+        dispatch({type: "CLEAR_CATEGORY_INDEX"})
     }
 }
 

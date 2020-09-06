@@ -10,6 +10,10 @@ const categoryIndexReducer = (state = initialState, action) => {
 
         case "MAIN_INDEX":
             return initialState;
+
+        case "CLEAR_CATEGORY_INDEX":
+            return initialState;
+            
         default:
             return state;
     }

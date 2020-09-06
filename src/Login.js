@@ -39,6 +39,7 @@ class Login extends Component {
                 this.props.loginUser(data.user.data)
                 this.props.loggedIn()
 
+
                 localStorage.token = data.token
                 localStorage.userId = data.user.data.attributes.id
             }

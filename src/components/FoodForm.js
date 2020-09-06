@@ -58,13 +58,12 @@ const FoodForm = (props) => {
         fetch(subcategoryURL, options)
         .then(resp => resp.json())
         .then(data => {
-            // let category = data.category.data.attributes
-            // props.addCategory(category)
 
-            let foodObject = data.category.data.attributes
-            props.addFoodName(foodObject)
-            // console.log(data.category.data.relationships.category.data.id)
-            localStorage.foodCategoryId = data.category.data.relationships.category.data.id
+            // console.log(data)
+            // let foodObject = data.category.data.attributes
+            // props.addFoodName(foodObject)
+            console.log(data.category.data.relationships.category.data.id)
+            // localStorage.foodCategoryId = data.category.data.relationships.category.data.id
         })
         clearState();
     }

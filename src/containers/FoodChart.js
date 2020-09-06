@@ -11,7 +11,17 @@ class FoodChart extends Component {
         this.props.fetchFoods()
     }
 
+
     render() {
+
+        const totalFoodAmount = this.props.foodAmount.reduce((a,b)=> a + b, 0)
+        this.props.foodvalues.unshift(totalFoodAmount)
+        const subtractFromTotal = this.props.foodvalues[0] - (this.props.foodvalues.slice(1).reduce((a,b)=> a + b, 0))
+        this.props.foodvalues[0] = subtractFromTotal
+
+        this.props.foodnames.unshift('Food')
+
+        console.log(this.props.foods)
 
         return (
             <div className='main-chart-container'>
@@ -22,6 +32,8 @@ class FoodChart extends Component {
                                     {(this.props.allCategories.length > 0) ? 
                                         <FoodDoughnutChart 
                                             allCategories={this.props.allCategories}
+                                            foodnames={this.props.foodnames}
+                                            foodvalues={this.props.foodvalues}
                                             foodAmount={this.props.foodAmount}
                                         />
                                     : 
@@ -35,6 +47,8 @@ class FoodChart extends Component {
                                 <Grid.Column>
                                     <FoodForm 
                                         allCategories={this.props.allCategories}
+                                        foodnames={this.props.foodnames}
+                                        foodvalues={this.props.foodvalues}
                                         foodAmount={this.props.foodAmount}
                                     />
                                 </Grid.Column>
@@ -48,4 +62,12 @@ class FoodChart extends Component {
     }
 }
 
-export default connect(null, { fetchFoods })(FoodChart)
+const mapStateToProps = state => {
+    return {
+        foods: state.food.foods,
+        foodnames: state.food.foods.map(food => food.name),
+        foodvalues: state.food.foods.map(food => food.amount)
+    }
+}
+
+export default connect(mapStateToProps, { fetchFoods })(FoodChart)

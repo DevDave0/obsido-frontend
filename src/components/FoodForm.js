@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Form, Grid, Header, Segment, Icon } from 'semantic-ui-react'
+import { Form, Grid, Header, Segment, Icon} from 'semantic-ui-react'
 import {connect} from 'react-redux';
 import { addFoodName } from '../actions/index'
 
@@ -17,17 +17,13 @@ const FoodForm = (props) => {
     function numberWithCommas(x) {
         return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     }
-    
-
 
     const foodCategoryId = props.allCategories.filter(category => {
         if (category.name === "Food"){
             return category
         }
     })
-    // [0].id
 
-    const foodAmountLeft = numberWithCommas(props.foodAmount.reduce((a,b)=> a + b, 0))
 
 
     const clearState = () => {
@@ -62,7 +58,7 @@ const FoodForm = (props) => {
             // console.log(data)
             let foodObject = data.category.data.attributes
             props.addFoodName(foodObject)
-            console.log(data.category.data.relationships.category.data.id)
+            // console.log(data.category.data.relationships.category.data.id)
             localStorage.foodCategoryId = data.category.data.relationships.category.data.id
         })
         clearState();
@@ -71,19 +67,20 @@ const FoodForm = (props) => {
     return (
         <div className='food-chart-container-form'>
 
+            {console.log(props.foodvalues[0])}
+
             <Grid textAlign='center' style={{ height: '50vh' }} verticalAlign='middle'>
                 <Grid.Column style={{ maxWidth: 450 }}>
                     <Header as='h2' color='teal' textAlign='center'>
                         <Icon name='plus circle' />
                         Add a Food
                     </Header>
-                    <form onSubmit={submit}>
+                    <form onSubmit={(e)=>{ props.foodvalues[0] > 0 ? submit(e) : alert("Not enough money!")}}>
                         <Segment raised>
-                        <div className="ui label"> 
-                            {`$${foodAmountLeft} in food money`}
-                        </div>
-                        <br></br>
-                        <br></br>
+
+                        {/* <div className="ui label"> 
+                            {`$${numberWithCommas(props.foodvalues[0])} left in food money`}
+                        </div> */}
 
                         <div className="ui pointing below label">
                             Please input a name.
@@ -117,5 +114,11 @@ const FoodForm = (props) => {
         </div>
     )
 }
+
+// const mapStateToProps = state => {
+//     return {
+//         foodvalues: state.food.foods.map(food => food.amount)
+//     }
+// }
 
 export default connect(null, { addFoodName })(FoodForm)

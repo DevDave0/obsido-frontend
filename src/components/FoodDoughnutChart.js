@@ -7,6 +7,15 @@ class FoodDoughnutChart extends Component {
 
     render(){
 
+        const totalFoodAmount = this.props.foodAmount.reduce((a,b)=> a + b, 0)
+
+        // this.props.foodvalues.unshift(totalFoodAmount)
+        // this.props.foodnames.unshift('Food')
+
+        // const subtractFromTotal = this.props.foodvalues[0] - (this.props.foodvalues.slice(1).reduce((a,b)=> a + b, 0))
+
+        // this.props.foodvalues[0] = subtractFromTotal
+    
         function getRandomColor() {
             let letters = '0123456789ABCDEF'.split('');
             let color = '#';
@@ -52,6 +61,19 @@ class FoodDoughnutChart extends Component {
                         getRandomColor(),
                         getRandomColor(),
                         getRandomColor(),
+                        getRandomColor(),
+                        getRandomColor(),
+                        getRandomColor(),
+                        getRandomColor(),
+                        getRandomColor(),
+                        getRandomColor(),
+                        getRandomColor(),
+                        getRandomColor(),
+                        getRandomColor(),
+                        getRandomColor(),
+                        getRandomColor(),
+                        getRandomColor(),
+                        getRandomColor(),
                     ]
                 }
             ]
@@ -59,8 +81,10 @@ class FoodDoughnutChart extends Component {
 
     return (
         <div className='main-chart-container-chart' >
-            {console.log((this.props.foodnames).unshift('Food'))}
-            {console.log((this.props.foodvalues).unshift(this.props.foodAmount.reduce((a,b)=> a + b, 0)))}
+            {/* {console.log((this.props.foodnames).unshift('Food'))} */}
+            {/* {console.log((this.props.foodvalues).unshift(totalFoodAmount))} */}
+
+            {/* {console.log(subtractFromTotal)} */}
 
             <Header as='h2' color='teal' textAlign='center'>
                 <Icon name='dollar sign' />
@@ -79,7 +103,7 @@ class FoodDoughnutChart extends Component {
                     },
                     title: {
                         display: true,
-                        text: (`$${numberWithCommas(this.props.foodAmount.reduce((a,b)=> a + b, 0))} spent on food`),
+                        text: (`$${numberWithCommas(totalFoodAmount)} spent on food`),
                         fontSize: 25
                     },
                     legend: {
@@ -87,7 +111,7 @@ class FoodDoughnutChart extends Component {
                         position: "left",
                         align: "center",
                         labels: {
-                            fontSize: 15
+                            fontSize: 10
                         },
 
                     },
@@ -117,12 +141,12 @@ class FoodDoughnutChart extends Component {
 
 
 
-const mapStateToProps = state => {
-    return {
-        foodnames: state.food.foods.map(food => food.name),
-        foodvalues: state.food.foods.map(food => food.amount)
-    }
-}
+// const mapStateToProps = state => {
+//     return {
+//         foodnames: state.food.foods.map(food => food.name),
+//         foodvalues: state.food.foods.map(food => food.amount)
+//     }
+// }
 
 
-export default connect(mapStateToProps)(FoodDoughnutChart);
+export default connect(null)(FoodDoughnutChart);

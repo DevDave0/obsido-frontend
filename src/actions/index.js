@@ -85,9 +85,9 @@ export const fetchCategories = () => {
 
 
 
-            console.log(result)
-            console.log(foodCategories)
-            console.log(answer[0])
+            // console.log(result)
+            // console.log(foodCategories)
+            // console.log(answer[0])
 
             const invoke = () =>{
                 if(answer){

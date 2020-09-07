@@ -2,20 +2,13 @@ import React, {Component} from 'react';
 import {Doughnut} from 'react-chartjs-2'
 import { Segment, Header, Icon } from 'semantic-ui-react'
 import {connect} from 'react-redux';
-import { clearCategoryIndex, clearFood } from '../actions/index'
+import { clearCategoryIndex, clearBills } from '../actions/index'
 
 class BillsDoughnutChart extends Component {
 
     render(){
 
-        const totalFoodAmount = this.props.foodAmount.reduce((a,b)=> a + b, 0)
-
-        // this.props.foodvalues.unshift(totalFoodAmount)
-        // this.props.foodnames.unshift('Food')
-
-        // const subtractFromTotal = this.props.foodvalues[0] - (this.props.foodvalues.slice(1).reduce((a,b)=> a + b, 0))
-
-        // this.props.foodvalues[0] = subtractFromTotal
+        const totalBillsAmount = this.props.billsAmount.reduce((a,b)=> a + b, 0)
     
         function getRandomColor() {
             let letters = '0123456789ABCDEF'.split('');
@@ -29,16 +22,15 @@ class BillsDoughnutChart extends Component {
         function numberWithCommas(x) {
             return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
         }
-        // ['Food', 'Cryptos', 'Food', 'Bills', 'Shopping', 'Misc']
 
         let data =  {
-            labels: (this.props.foodnames),
+            labels: (this.props.billsnames),
             datasets: [
                 {
                     label: 'Amount',
                     hoverBackgroundColor: "rgba(51, 82, 73, 0.87)",
                     hoverBorderColor: "white",
-                    data: (this.props.foodvalues),
+                    data: (this.props.billsvalues),
                     backgroundColor: [
                         'rgba(70, 235, 70, 1', 
                         getRandomColor(),
@@ -82,10 +74,6 @@ class BillsDoughnutChart extends Component {
 
     return (
         <div className='main-chart-container-chart' >
-            {/* {console.log((this.props.foodnames).unshift('Food'))} */}
-            {/* {console.log((this.props.foodvalues).unshift(totalFoodAmount))} */}
-
-            {/* {console.log(subtractFromTotal)} */}
 
             <Header as='h2' color='teal' textAlign='center'>
                 <Icon name='dollar sign' />
@@ -104,7 +92,7 @@ class BillsDoughnutChart extends Component {
                     },
                     title: {
                         display: true,
-                        text: (`$${numberWithCommas(totalFoodAmount)} spent on food`),
+                        text: (`$${numberWithCommas(totalBillsAmount)} spent on bills`),
                         fontSize: 25
                     },
                     legend: {
@@ -136,7 +124,7 @@ class BillsDoughnutChart extends Component {
             </Segment>
             <button className="ui fluid teal button big" onClick={()=> {
                 this.props.clearCategoryIndex()
-                this.props.clearFood()
+                this.props.clearBills()
 
             }}>Go back to main categories</button>
         </div>
@@ -146,13 +134,4 @@ class BillsDoughnutChart extends Component {
 }
 
 
-
-// const mapStateToProps = state => {
-//     return {
-//         foodnames: state.food.foods.map(food => food.name),
-//         foodvalues: state.food.foods.map(food => food.amount)
-//     }
-// }
-
-
-export default connect(null, { clearCategoryIndex, clearFood })(BillsDoughnutChart);
+export default connect(null, { clearCategoryIndex, clearBills })(BillsDoughnutChart);

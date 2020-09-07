@@ -65,12 +65,7 @@ class ChartContainer extends Component {
                 /> : 
                     this.props.categoryIndex === 3 ? <BillsChart 
                     allCategories={this.props.categories}
-                    stockAmount={this.props.stockAmount}
-                    cryptoAmount={this.props.cryptoAmount}
-                    foodAmount={this.props.foodAmount}
                     billsAmount={this.props.billsAmount}
-                    shoppingAmount={this.props.shoppingAmount}
-                    miscAmount={this.props.miscAmount}
                 /> : 
                     this.props.categoryIndex === 4 ? <ShoppingChart 
                     allCategories={this.props.categories}

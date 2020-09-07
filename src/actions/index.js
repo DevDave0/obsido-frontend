@@ -137,9 +137,22 @@ export const clearFood = () => {
     }
 }
 
+export const clearBills = () => {
+    return (dispatch) => {
+        dispatch({type: "CLEAR_BILLS"})
+    }
+}
+
+
 export const addFoodName = (name) => {
     return (dispatch) => {
         dispatch({type: "ADD_FOOD_NAME", name})
+    }
+}
+
+export const addBills = (name) => {
+    return (dispatch) => {
+        dispatch({type: "ADD_BILLS", name})
     }
 }
 
@@ -169,21 +182,21 @@ export const fetchFoods = () => {
 
 export const fetchBills = () => {
     return (dispatch) => {
-        dispatch({ type: "LOADING_FOODS"})
+        dispatch({ type: "LOADING_BILLS"})
         fetch(subcategoryURL)
         .then(resp => resp.json())
         .then(subcategories => {
             // console.log(subcategories)
             
             const result = subcategories.filter(subcategory => {
-                if(subcategory.category_id === parseInt(localStorage.foodCategoryId)){
+                if(subcategory.category_id === parseInt(localStorage.billsCategoryId)){
                     return subcategory
                 }
                 else 
                 return null
             })
             result.forEach(subcategory => {
-                dispatch({type: "ADD_FETCH_FOOD", name: subcategory})
+                dispatch({type: "ADD_FETCH_BILLS", name: subcategory})
             })
         })
     }

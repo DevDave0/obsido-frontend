@@ -7,6 +7,7 @@ import categoryIndexReducer from './categoryIndexReducer';
 import foodReducer from './foodReducer';
 import billsReducer from './billsReducer';
 import shoppingReducer from './shoppingReducer';
+import miscReducer from './miscReducer';
 
 
 const rootReducer = combineReducers({
@@ -18,6 +19,7 @@ const rootReducer = combineReducers({
     food: foodReducer,
     bills: billsReducer,
     shopping: shoppingReducer,
+    misc: miscReducer,
 })
 
 export default rootReducer

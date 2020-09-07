@@ -20,7 +20,7 @@ class DoughnutChart extends Component {
 
 
         let data =  {
-            labels: ['Stocks', 'Cryptos', 'Food', 'Bills', 'Shopping', 'Misc'],
+            labels: ['Stocks', 'Crypto', 'Food', 'Bills', 'Shopping', 'Misc'],
             datasets: [
                 {
                     label: 'Amount',

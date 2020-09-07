@@ -68,7 +68,7 @@ const MiscForm = (props) => {
                 <Grid.Column style={{ maxWidth: 450 }}>
                     <Header as='h2' color='teal' textAlign='center'>
                         <Icon name='plus circle' />
-                        Add a Bill
+                        Add miscellaneous items
                     </Header>
                     <form onSubmit={(e)=>{ props.miscvalues[0] > 0 ? submit(e) : alert("Not enough money!")}}>
                         <Segment raised>

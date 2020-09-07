@@ -33,7 +33,7 @@ class CryptoChart extends Component {
                                             allCategories={this.props.allCategories}
                                             cryptosnames={this.props.cryptosnames}
                                             cryptosvalues={this.props.cryptosvalues}
-                                            cryptosAmount={this.props.cryptosAmount}
+                                            cryptoAmount={this.props.cryptoAmount}
                                         />
                                     : 
                                         <Segment placeholder raised loading>
@@ -48,7 +48,7 @@ class CryptoChart extends Component {
                                         allCategories={this.props.allCategories}
                                         cryptosnames={this.props.cryptosnames}
                                         cryptosvalues={this.props.cryptosvalues}
-                                        cryptosAmount={this.props.cryptosAmount}
+                                        cryptoAmount={this.props.cryptoAmount}
                                     />
                                 </Grid.Column>
                             

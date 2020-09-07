@@ -68,7 +68,7 @@ const ShoppingForm = (props) => {
                 <Grid.Column style={{ maxWidth: 450 }}>
                     <Header as='h2' color='teal' textAlign='center'>
                         <Icon name='plus circle' />
-                        Add a Bill
+                        Add things you shopped for
                     </Header>
                     <form onSubmit={(e)=>{ props.shoppingvalues[0] > 0 ? submit(e) : alert("Not enough money!")}}>
                         <Segment raised>

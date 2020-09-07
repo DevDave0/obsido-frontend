@@ -8,6 +8,7 @@ import foodReducer from './foodReducer';
 import billsReducer from './billsReducer';
 import shoppingReducer from './shoppingReducer';
 import miscReducer from './miscReducer';
+import cryptosReducer from './cryptosReducer';
 
 
 const rootReducer = combineReducers({
@@ -20,6 +21,7 @@ const rootReducer = combineReducers({
     bills: billsReducer,
     shopping: shoppingReducer,
     misc: miscReducer,
+    cryptos: cryptosReducer,
 })
 
 export default rootReducer

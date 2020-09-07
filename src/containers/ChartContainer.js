@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import { fetchCategories, fetchFoods } from '../actions/index'
+import { fetchCategories } from '../actions/index'
 import {connect} from 'react-redux';
 
 import MainChart from './MainChart'
@@ -18,7 +18,6 @@ class ChartContainer extends Component {
 
     componentDidMount() {
         this.props.fetchCategories()
-        // this.props.fetchFoods()
     }
 
     render(){
@@ -116,4 +115,4 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps, {fetchCategories, fetchFoods})(ChartContainer)
+export default connect(mapStateToProps, {fetchCategories})(ChartContainer)

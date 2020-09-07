@@ -90,6 +90,17 @@ export const fetchCategories = () => {
                 }
             })
 
+            const miscCategories = result.map(category => {
+                if (category.attributes.name === "Misc"){
+                    return category.attributes.id
+                } else {
+                    return undefined
+                }
+            })
+
+
+
+
             const answer = foodCategories.filter(element => {
                 if (element !== undefined){
                     return element
@@ -107,6 +118,14 @@ export const fetchCategories = () => {
                     return element
                 }
             })
+
+            const answer4 = miscCategories.filter(element => {
+                if (element !== undefined){
+                    return element
+                }
+            })
+
+
 
             const invokeFoods = () =>{
                 if(answer){
@@ -132,9 +151,18 @@ export const fetchCategories = () => {
                 }
             }
 
+            const invokeMisc = () =>{
+                if(answer4){
+                    localStorage.miscCategoryId = answer4[0]
+                } else {
+                    localStorage.miscCategoryId = '100'
+                }
+            }
+
             invokeFoods();
             invokeBills();
             invokeShopping();
+            invokeMisc();
 
             result.forEach(category => {
                 dispatch({type: "ADD_FETCH_CATEGORY", category: category.attributes})
@@ -175,6 +203,11 @@ export const clearShopping = () => {
     }
 }
 
+export const clearMisc = () => {
+    return (dispatch) => {
+        dispatch({type: "CLEAR_MISC"})
+    }
+}
 
 
 export const addFoodName = (name) => {
@@ -195,7 +228,11 @@ export const addShopping = (name) => {
     }
 }
 
-
+export const addMisc = (name) => {
+    return (dispatch) => {
+        dispatch({type: "ADD_MISC", name})
+    }
+}
 
 
 export const fetchFoods = () => {
@@ -256,6 +293,27 @@ export const fetchShopping = () => {
             })
             result.forEach(subcategory => {
                 dispatch({type: "ADD_FETCH_SHOPPING", name: subcategory})
+            })
+        })
+    }
+}
+
+export const fetchMisc = () => {
+    return (dispatch) => {
+        dispatch({ type: "LOADING_MISC"})
+        fetch(subcategoryURL)
+        .then(resp => resp.json())
+        .then(subcategories => {
+            
+            const result = subcategories.filter(subcategory => {
+                if(subcategory.category_id === parseInt(localStorage.miscCategoryId)){
+                    return subcategory
+                }
+                else 
+                return null
+            })
+            result.forEach(subcategory => {
+                dispatch({type: "ADD_FETCH_MISC", name: subcategory})
             })
         })
     }

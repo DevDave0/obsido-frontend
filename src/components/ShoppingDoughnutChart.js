@@ -2,13 +2,13 @@ import React, {Component} from 'react';
 import {Doughnut} from 'react-chartjs-2'
 import { Segment, Header, Icon } from 'semantic-ui-react'
 import {connect} from 'react-redux';
-import { clearCategoryIndex, clearBills } from '../actions/index'
+import { clearCategoryIndex, clearShopping } from '../actions/index'
 
-class BillsDoughnutChart extends Component {
+class ShoppingDoughnutChart extends Component {
 
     render(){
 
-        const totalBillsAmount = this.props.billsAmount.reduce((a,b)=> a + b, 0)
+        const totalShoppingAmount = this.props.shoppingAmount.reduce((a,b)=> a + b, 0)
     
         function getRandomColor() {
             let letters = '0123456789ABCDEF'.split('');
@@ -24,15 +24,15 @@ class BillsDoughnutChart extends Component {
         }
 
         let data =  {
-            labels: (this.props.billsnames),
+            labels: (this.props.shoppingnames),
             datasets: [
                 {
                     label: 'Amount',
                     hoverBackgroundColor: "rgba(51, 82, 73, 0.87)",
                     hoverBorderColor: "white",
-                    data: (this.props.billsvalues),
+                    data: (this.props.shoppingvalues),
                     backgroundColor: [
-                        'rgba(70, 235, 70, 1', 
+                        'rgba(54, 162, 235, 1', 
                         getRandomColor(),
                         getRandomColor(),
                         getRandomColor(),
@@ -92,7 +92,7 @@ class BillsDoughnutChart extends Component {
                     },
                     title: {
                         display: true,
-                        text: (`$${numberWithCommas(totalBillsAmount)} spent on bills`),
+                        text: (`$${numberWithCommas(totalShoppingAmount)} spent on shopping`),
                         fontSize: 25
                     },
                     legend: {
@@ -124,7 +124,7 @@ class BillsDoughnutChart extends Component {
             </Segment>
             <button className="ui fluid teal button big" onClick={()=> {
                 this.props.clearCategoryIndex()
-                this.props.clearBills()
+                this.props.clearShopping()
 
             }}>Go back to main categories</button>
         </div>
@@ -134,4 +134,4 @@ class BillsDoughnutChart extends Component {
 }
 
 
-export default connect(null, { clearCategoryIndex, clearBills })(BillsDoughnutChart);
+export default connect(null, { clearCategoryIndex, clearShopping })(ShoppingDoughnutChart);

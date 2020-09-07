@@ -1,13 +1,13 @@
 import React, { useState } from 'react'
 import { Form, Grid, Header, Segment, Icon} from 'semantic-ui-react'
 import {connect} from 'react-redux';
-import { addBills } from '../actions/index'
+import { addShopping } from '../actions/index'
 
 const baseURL = 'http://localhost:3000/'
 const subcategoryURL = baseURL + 'sub_categories'
 
 
-const BillsForm = (props) => {
+const ShoppingForm = (props) => {
 
     const [name, setName] = useState('')
     const [description, setDescription] = useState('')
@@ -17,8 +17,8 @@ const BillsForm = (props) => {
     //     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     // }
 
-    const billsCategoryId = props.allCategories.filter(category => {
-        if (category.name === "Bills"){
+    const shoppingCategoryId = props.allCategories.filter(category => {
+        if (category.name === "Shopping"){
             return category
         }
     })
@@ -46,7 +46,7 @@ const BillsForm = (props) => {
                 name: name,
                 amount: amount,
                 description: description,
-                category_id: billsCategoryId[0].id
+                category_id: shoppingCategoryId[0].id
             })
         }
 
@@ -54,15 +54,15 @@ const BillsForm = (props) => {
         .then(resp => resp.json())
         .then(data => {
 
-            let billsObject = data.category.data.attributes
-            props.addBills(billsObject)
-            localStorage.billsCategoryId = data.category.data.relationships.category.data.id
+            let shoppingObject = data.category.data.attributes
+            props.addShopping(shoppingObject)
+            localStorage.shoppingCategoryId = data.category.data.relationships.category.data.id
         })
         clearState();
     }
 
     return (
-        <div className='bills-chart-container-form'>
+        <div className='shopping-chart-container-form'>
 
             <Grid textAlign='center' style={{ height: '50vh' }} verticalAlign='middle'>
                 <Grid.Column style={{ maxWidth: 450 }}>
@@ -70,13 +70,13 @@ const BillsForm = (props) => {
                         <Icon name='plus circle' />
                         Add a Bill
                     </Header>
-                    <form onSubmit={(e)=>{ props.billsvalues[0] > 0 ? submit(e) : alert("Not enough money!")}}>
+                    <form onSubmit={(e)=>{ props.shoppingvalues[0] > 0 ? submit(e) : alert("Not enough money!")}}>
                         <Segment raised>
 
                         <div className="ui pointing below label">
                             Please input a name.
                         </div>
-                        <Form.Input fluid icon='edit' iconPosition='left' placeholder='e.g. Student loans, Electric bill, Phone bill...' onChange={(e) => setName(e.target.value)} value={name} type='text' />
+                        <Form.Input fluid icon='edit' iconPosition='left' placeholder='e.g. Clothes, New Computer, Shoes...' onChange={(e) => setName(e.target.value)} value={name} type='text' />
 
                         <br></br>
 
@@ -107,4 +107,4 @@ const BillsForm = (props) => {
 }
 
 
-export default connect(null, { addBills })(BillsForm)
+export default connect(null, { addShopping })(ShoppingForm)

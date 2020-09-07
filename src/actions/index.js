@@ -2,6 +2,7 @@ const baseURL = 'http://localhost:3000/'
 const categoryURL = baseURL + 'categories'
 const subcategoryURL = baseURL + 'sub_categories'
 const cryptosURL = baseURL + 'cryptos'
+const stockURL = baseURL + 'stocks'
 
 export const increment = () => {
     return {
@@ -107,6 +108,15 @@ export const fetchCategories = () => {
                 }
             })
 
+            const stockCategories = result.map(category => {
+                if (category.attributes.name === "Stocks"){
+                    return category.attributes.id
+                } else {
+                    return undefined
+                }
+            })
+
+
 
 
 
@@ -135,6 +145,12 @@ export const fetchCategories = () => {
             })
 
             const answer5 = cryptosCategories.filter(element => {
+                if (element !== undefined){
+                    return element
+                }
+            })
+
+            const answer6 = stockCategories.filter(element => {
                 if (element !== undefined){
                     return element
                 }
@@ -182,11 +198,20 @@ export const fetchCategories = () => {
                 }
             }
 
+            const invokeStock = () =>{
+                if(answer6){
+                    localStorage.stockCategoryId = answer6[0]
+                } else {
+                    localStorage.stockCategoryId = '100'
+                }
+            }
+
             invokeFoods();
             invokeBills();
             invokeShopping();
             invokeMisc();
             invokeCryptos();
+            invokeStock();
 
             result.forEach(category => {
                 dispatch({type: "ADD_FETCH_CATEGORY", category: category.attributes})
@@ -239,6 +264,14 @@ export const clearCryptos = () => {
     }
 }
 
+export const clearStock = () => {
+    return (dispatch) => {
+        dispatch({type: "CLEAR_STOCK"})
+    }
+}
+
+
+
 
 export const addFoodName = (name) => {
     return (dispatch) => {
@@ -267,6 +300,12 @@ export const addMisc = (name) => {
 export const addCryptos = (name) => {
     return (dispatch) => {
         dispatch({type: "ADD_CRYPTOS", name})
+    }
+}
+
+export const addStock = (name) => {
+    return (dispatch) => {
+        dispatch({type: "ADD_STOCK", name})
     }
 }
 
@@ -371,6 +410,27 @@ export const fetchCryptos = () => {
             })
             result.forEach(crypto => {
                 dispatch({type: "ADD_FETCH_CRYPTOS", name: crypto})
+            })
+        })
+    }
+}
+
+export const fetchStock = () => {
+    return (dispatch) => {
+        dispatch({ type: "LOADING_STOCK"})
+        fetch(stockURL)
+        .then(resp => resp.json())
+        .then(stocks => {
+            
+            const result = stocks.filter(stock => {
+                if(stock.category_id === parseInt(localStorage.stockCategoryId)){
+                    return stock
+                }
+                else 
+                return null
+            })
+            result.forEach(stock => {
+                dispatch({type: "ADD_FETCH_STOCK", name: stock})
             })
         })
     }

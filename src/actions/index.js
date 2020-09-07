@@ -1,6 +1,7 @@
 const baseURL = 'http://localhost:3000/'
 const categoryURL = baseURL + 'categories'
 const subcategoryURL = baseURL + 'sub_categories'
+const cryptosURL = baseURL + 'cryptos'
 
 export const increment = () => {
     return {
@@ -98,6 +99,14 @@ export const fetchCategories = () => {
                 }
             })
 
+            const cryptosCategories = result.map(category => {
+                if (category.attributes.name === "Cryptos"){
+                    return category.attributes.id
+                } else {
+                    return undefined
+                }
+            })
+
 
 
 
@@ -120,6 +129,12 @@ export const fetchCategories = () => {
             })
 
             const answer4 = miscCategories.filter(element => {
+                if (element !== undefined){
+                    return element
+                }
+            })
+
+            const answer5 = cryptosCategories.filter(element => {
                 if (element !== undefined){
                     return element
                 }
@@ -159,10 +174,19 @@ export const fetchCategories = () => {
                 }
             }
 
+            const invokeCryptos = () =>{
+                if(answer5){
+                    localStorage.cryptosCategoryId = answer5[0]
+                } else {
+                    localStorage.cryptosCategoryId = '100'
+                }
+            }
+
             invokeFoods();
             invokeBills();
             invokeShopping();
             invokeMisc();
+            invokeCryptos();
 
             result.forEach(category => {
                 dispatch({type: "ADD_FETCH_CATEGORY", category: category.attributes})
@@ -209,6 +233,12 @@ export const clearMisc = () => {
     }
 }
 
+export const clearCryptos = () => {
+    return (dispatch) => {
+        dispatch({type: "CLEAR_CRYPTOS"})
+    }
+}
+
 
 export const addFoodName = (name) => {
     return (dispatch) => {
@@ -231,6 +261,12 @@ export const addShopping = (name) => {
 export const addMisc = (name) => {
     return (dispatch) => {
         dispatch({type: "ADD_MISC", name})
+    }
+}
+
+export const addCryptos = (name) => {
+    return (dispatch) => {
+        dispatch({type: "ADD_CRYPTOS", name})
     }
 }
 
@@ -314,6 +350,27 @@ export const fetchMisc = () => {
             })
             result.forEach(subcategory => {
                 dispatch({type: "ADD_FETCH_MISC", name: subcategory})
+            })
+        })
+    }
+}
+
+export const fetchCryptos = () => {
+    return (dispatch) => {
+        dispatch({ type: "LOADING_CRYPTOS"})
+        fetch(cryptosURL)
+        .then(resp => resp.json())
+        .then(cryptos => {
+            
+            const result = cryptos.filter(crypto => {
+                if(crypto.category_id === parseInt(localStorage.cryptosCategoryId)){
+                    return crypto
+                }
+                else 
+                return null
+            })
+            result.forEach(crypto => {
+                dispatch({type: "ADD_FETCH_CRYPTOS", name: crypto})
             })
         })
     }

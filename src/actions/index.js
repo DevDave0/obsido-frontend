@@ -112,22 +112,11 @@ export const fetchCategories = () => {
 
             invokeFoods();
             invokeBills();
-            // localStorage.foodCategoryId = answer
-
-            // console.log(foodIds)
-            // const firstFoodId = result.map(category => {
-            //     if(category.attributes.name === 'Food'){
-            //         return category.attributes.id
-            //     }
-            // })
-
-            // console.log(firstFoodId)
-
 
             result.forEach(category => {
                 dispatch({type: "ADD_FETCH_CATEGORY", category: category.attributes})
             })
-            // console.log(result)
+
         })
     }
 }
@@ -178,7 +167,6 @@ export const fetchFoods = () => {
         fetch(subcategoryURL)
         .then(resp => resp.json())
         .then(subcategories => {
-            // console.log(subcategories)
             
             const result = subcategories.filter(subcategory => {
                 if(subcategory.category_id === parseInt(localStorage.foodCategoryId)){
@@ -200,7 +188,6 @@ export const fetchBills = () => {
         fetch(subcategoryURL)
         .then(resp => resp.json())
         .then(subcategories => {
-            // console.log(subcategories)
             
             const result = subcategories.filter(subcategory => {
                 if(subcategory.category_id === parseInt(localStorage.billsCategoryId)){

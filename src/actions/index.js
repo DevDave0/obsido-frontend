@@ -65,10 +65,17 @@ export const fetchCategories = () => {
                     return null
                 }
             })
-            
 
             const foodCategories = result.map(category => {
                 if (category.attributes.name === "Food"){
+                    return category.attributes.id
+                } else {
+                    return undefined
+                }
+            })
+
+            const billsCategories = result.map(category => {
+                if (category.attributes.name === "Bills"){
                     return category.attributes.id
                 } else {
                     return undefined
@@ -80,16 +87,14 @@ export const fetchCategories = () => {
                     return element
                 }
             })
-            // const answer = foodCategories
 
+            const answer2 = billsCategories.filter(element => {
+                if (element !== undefined){
+                    return element
+                }
+            })
 
-
-
-            // console.log(result)
-            // console.log(foodCategories)
-            // console.log(answer[0])
-
-            const invoke = () =>{
+            const invokeFoods = () =>{
                 if(answer){
                     localStorage.foodCategoryId = answer[0]
                 } else {
@@ -97,7 +102,16 @@ export const fetchCategories = () => {
                 }
             }
 
-            invoke();
+            const invokeBills = () =>{
+                if(answer2){
+                    localStorage.billsCategoryId = answer2[0]
+                } else {
+                    localStorage.billsCategoryId = '100'
+                }
+            }
+
+            invokeFoods();
+            invokeBills();
             // localStorage.foodCategoryId = answer
 
             // console.log(foodIds)

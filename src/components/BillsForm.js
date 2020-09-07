@@ -13,9 +13,9 @@ const BillsForm = (props) => {
     const [description, setDescription] = useState('')
     const [amount, setAmount] = useState()
 
-    function numberWithCommas(x) {
-        return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-    }
+    // function numberWithCommas(x) {
+    //     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    // }
 
     const billsCategoryId = props.allCategories.filter(category => {
         if (category.name === "Bills"){

@@ -9,6 +9,7 @@ import billsReducer from './billsReducer';
 import shoppingReducer from './shoppingReducer';
 import miscReducer from './miscReducer';
 import cryptosReducer from './cryptosReducer';
+import stockReducer from './stockReducer';
 
 
 const rootReducer = combineReducers({
@@ -22,6 +23,7 @@ const rootReducer = combineReducers({
     shopping: shoppingReducer,
     misc: miscReducer,
     cryptos: cryptosReducer,
+    stock: stockReducer,
 })
 
 export default rootReducer

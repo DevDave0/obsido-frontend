@@ -102,3 +102,7 @@
 .log.ui.celled.striped.padded.table {
     text-align: center;
 }
+
+input[type="radio"]{
+    margin: 0 10px 0 10px;
+  }

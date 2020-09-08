@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import SpendingLogList from "../components/SpendingLogList";
 import SearchLog from "../components/SearchLog";
+import SortLog from "../components/SortLog";
 const baseURL = 'http://localhost:3000/'
 const categoryURL = baseURL + 'categories'
 
@@ -10,6 +11,7 @@ class AccountContainer extends Component {
     state = {
         categories: [],
         displayedCategories: [],
+        sortBy: 'None'
     }
 
     componentDidMount() {
@@ -43,6 +45,21 @@ class AccountContainer extends Component {
 
     }
 
+    changeSortBy = (sort) => {this.setState({ sortBy: sort})}
+
+    sortInvoke = () => {
+        let categories = [...this.state.displayedCategories]
+        let sortBy = this.state.sortBy 
+    
+        if ( sortBy === 'Category') {
+          categories.sort((t1, t2) => t1.name.localeCompare(t2.name))
+        } else if ( sortBy === 'Description') {
+          categories.sort((t1, t2) => t1.description.localeCompare(t2.description))
+        } 
+        return categories
+      }
+    
+
 
   render() {
     return (
@@ -50,9 +67,16 @@ class AccountContainer extends Component {
         <SearchLog 
             changeSearch={this.changeSearch}
         />
-        <SpendingLogList
-            categories={this.state.displayedCategories}
+        <br></br>
+        <SortLog 
+            changeSortBy={this.changeSortBy}
+            sortBy={this.state.sortBy}
         />
+
+        <SpendingLogList
+            categories={this.sortInvoke()}
+        />
+
       </div>
     );
   }

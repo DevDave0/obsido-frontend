@@ -1,4 +1,4 @@
-  
+
 import React from "react";
 import SpendingLogItem from './SpendingLogItem'
 
@@ -6,9 +6,8 @@ const SpendingLogList = (props) => {
 
     let { categories } = props
 
-
   return (
-    <table className="ui celled striped padded table">
+    <table className="log ui celled striped padded table">
       <tbody>
         <tr>
           <th>

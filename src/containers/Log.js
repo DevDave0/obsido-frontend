@@ -44,10 +44,6 @@ const Log = (props) => {
                 <Sidebar toggleMenu={toggle} />
                 <div className={classes}>
                     <br></br>
-                    <h1 className='obsido'>Obsido</h1>
-                    <br></br>
-
-                    {/* set conditional rendering */}
                     <LogContainer />
 
                 </div>

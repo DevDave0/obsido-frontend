@@ -1,5 +1,5 @@
 let initialState = {
-    categories: [], loading: false
+    categories: [], displayedCategories: [], loading: false
 }
 
 const categoryReducer = (state = initialState, action) => {
@@ -21,6 +21,7 @@ const categoryReducer = (state = initialState, action) => {
             return {
                 ...state, 
                 categories: [...state.categories, action.category],
+                displayedCategories: [...state.displayedCategories, action.category],
                 loading: false
             }
 

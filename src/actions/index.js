@@ -53,6 +53,7 @@ export const clearCategory = (category) => {
 }
 
 
+
 export const fetchCategories = () => {
     return (dispatch) => {
         dispatch({ type: "LOADING_CATEGORIES"})

@@ -93,3 +93,12 @@
     padding-left: 180px;
 
 }
+
+.log.ui.raised.segment {
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.log.ui.celled.striped.padded.table {
+    text-align: center;
+}

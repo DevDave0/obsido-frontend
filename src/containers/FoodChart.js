@@ -21,7 +21,6 @@ class FoodChart extends Component {
 
         this.props.foodnames.unshift('Food')
 
-        console.log(this.props.foods)
 
         return (
             <div className='main-chart-container'>

@@ -6,7 +6,10 @@ import Header from '../components/Header'
 import Sidebar from '../components/Sidebar'
 import classNames from 'classnames'
 
-const Main = (props) => {
+
+
+
+const Log = (props) => {
 
     const [toggle, setToggle] = useState(false);
 
@@ -30,9 +33,9 @@ const Main = (props) => {
         setToggle(!toggle);
     }
 
+    
     return (
         <div>
-
             <Header 
                 toggleMenu={toggleMenu} 
                 logOut={logOut}
@@ -45,7 +48,7 @@ const Main = (props) => {
                     <br></br>
 
                     {/* set conditional rendering */}
-                    <ChartContainer />
+                    <h1>Spending Log</h1>
 
                 </div>
 
@@ -54,11 +57,13 @@ const Main = (props) => {
     )
 }
 
-    const mapStateToProps = state => {
-        return {
-            user: state.user,
-            category: state.category
-        }
+const mapStateToProps = state => {
+    return {
+        user: state.user,
+        category: state.category
     }
+}
 
-export default connect(mapStateToProps, {loggedOut, logoutUser, clearCategory, clearCategoryIndex, clearFood})(Main)
+export default connect(mapStateToProps, {loggedOut, logoutUser, clearCategory, clearCategoryIndex, clearFood})(Log)
+
+

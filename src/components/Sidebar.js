@@ -12,17 +12,17 @@ const Sidebar = (props) => {
 
         <div >
             <div className={cx}>
-                <a className='item' href='example.com'>
+                <a className='item' href='home'>
                     <i className='home icon'></i>
                     Profile
                 </a>
-                <a className='item' href='example.com'>
+                <a className='item' href='log'>
                     <i className='block layout icon'></i>
-                    Weekly Spending
+                    Spending Log
                 </a>
-                <a className='item' href='example.com'>
+                <a className='item' href='info'>
                     <i className='smile icon'></i>
-                    placeholder
+                    User Information
                 </a>
                 <a className='item' href='example.com'>
                     <i className='calendar icon'></i>

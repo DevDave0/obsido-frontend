@@ -55,10 +55,9 @@ const FoodForm = (props) => {
         .then(resp => resp.json())
         .then(data => {
 
-            // console.log(data)
             let foodObject = data.category.data.attributes
             props.addFoodName(foodObject)
-            // console.log(data.category.data.relationships.category.data.id)
+
             localStorage.foodCategoryId = data.category.data.relationships.category.data.id
         })
         clearState();
@@ -66,8 +65,6 @@ const FoodForm = (props) => {
 
     return (
         <div className='food-chart-container-form'>
-
-            {console.log(props.foodvalues[0])}
 
             <Grid textAlign='center' style={{ height: '50vh' }} verticalAlign='middle'>
                 <Grid.Column style={{ maxWidth: 450 }}>

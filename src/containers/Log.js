@@ -1,10 +1,10 @@
 import React, {useState} from 'react'
 import {connect} from 'react-redux';
 import {loggedOut, logoutUser, clearCategory, clearCategoryIndex, clearFood} from '../actions/index';
-import ChartContainer from './ChartContainer'
 import Header from '../components/Header'
 import Sidebar from '../components/Sidebar'
 import classNames from 'classnames'
+import LogContainer from './LogContainer'
 
 
 
@@ -48,7 +48,7 @@ const Log = (props) => {
                     <br></br>
 
                     {/* set conditional rendering */}
-                    <h1>Spending Log</h1>
+                    <LogContainer />
 
                 </div>
 

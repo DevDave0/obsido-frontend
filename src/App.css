@@ -3,8 +3,9 @@
     /* display: inline; */
     /* position: relative; */
     font: 50px Helvetica, Sans-Serif;
-	letter-spacing: -1px;
-	color: rgba(88, 158, 238, 0.5); 
+    letter-spacing: -1px;
+    
+	color: rgba(37, 78, 124, 0.5); 
 }
 
 .login{
@@ -33,11 +34,11 @@
     background-size: cover;
 }
 
-.obsido:after {
+/* .obsido:after {
 	content: "Obsido";
 	position: absolute; left: 680px; top: 40px;
 	color: rgba(58, 192, 185, 0.315);   
-}
+} */
 
 
 .main-chart-container {
@@ -74,7 +75,7 @@
     /* margin: 0; */
     /* float: right;     */
     padding-bottom: 50px;
-    padding-left: 180px;
+    padding-left: 120px;
     /* flex-grow: 1; */
     /* justify-content: flex-end; */
 
@@ -92,42 +93,42 @@
 .food-chart-container-form {
 
     padding-bottom: 80px;
-    padding-left: 180px;
+    padding-left: 120px;
 
 }
 
 .bills-chart-container-form {
 
     padding-bottom: 80px;
-    padding-left: 180px;
+    padding-left: 120px;
 
 }
 
 .shopping-chart-container-form {
 
     padding-bottom: 80px;
-    padding-left: 180px;
+    padding-left: 120px;
 
 }
 
 .misc-chart-container-form {
 
     padding-bottom: 80px;
-    padding-left: 180px;
+    padding-left: 120px;
 
 }
 
 .cryptos-chart-container-form {
 
     padding-bottom: 80px;
-    padding-left: 180px;
+    padding-left: 120px;
 
 }
 
 .stock-chart-container-form {
 
     padding-bottom: 80px;
-    padding-left: 180px;
+    padding-left: 120px;
 
 }
 

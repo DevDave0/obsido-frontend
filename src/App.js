@@ -9,6 +9,7 @@ import {connect} from 'react-redux';
 import {loggedIn} from './actions/index';
 import Log from './containers/Log'
 import UserInfo from './containers/UserInfo'
+import StockSearch from './containers/StockSearch'
 
 
 class App extends React.Component {
@@ -37,6 +38,8 @@ class App extends React.Component {
             <Route exact path='/log'  render={(routeProps) => <Log {...routeProps} />} />
 
             <Route exact path='/user_info'  render={(routeProps) => <UserInfo {...routeProps} />} />
+
+            <Route exact path='/stock_search'  render={(routeProps) => <StockSearch {...routeProps} />} />
 
 
         </div>

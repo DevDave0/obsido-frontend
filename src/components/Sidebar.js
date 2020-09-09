@@ -21,16 +21,16 @@ const Sidebar = (props) => {
                     Spending Log
                 </a>
                 <a className='item' href='user_info'>
-                    <i className='smile icon'></i>
+                    <i className='user icon'></i>
                     User Information
                 </a>
                 {/* <a className='item' href='example.com'>
                     <i className='calendar icon'></i>
                     Monthly Spending
-                </a>
-                <a className='item' href='example.com'>
-                    <i className='home icon'></i>
-                    Placeholder
+                </a> */}
+                {/* <a className='item' href='stock_search'>
+                    <i className='search icon'></i>
+                    Stock Search
                 </a> */}
 
             </div>

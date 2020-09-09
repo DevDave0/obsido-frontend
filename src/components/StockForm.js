@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Form, Grid, Header, Segment, Icon} from 'semantic-ui-react'
+import { Form, Grid, Header, Segment, Icon, Dropdown} from 'semantic-ui-react'
 import {connect} from 'react-redux';
 import { addStock } from '../actions/index'
 import StockList from '../StockList'
@@ -13,13 +13,10 @@ const formattedStocks = seperatedStocks.map(stock => {
     return stock.split(' - ')[0]
 })
 
-// const resultStocks = () => {
-//     result = []
-//     seperatedStocks.forEach(stock => {
-//         stock.split(' - ')
-//     })
-// }
-// const resultStocks = seperatedStocks.substring(seperatedStocks.indexOf(' -'))
+const resultStocks = formattedStocks.map(stock => {
+    let splitStock = stock.split('|')
+    return {key: splitStock[0], value: stock, text: stock}
+})
 
 
 const StockForm = (props) => {
@@ -27,10 +24,20 @@ const StockForm = (props) => {
     const [name, setName] = useState('')
     const [description, setDescription] = useState('')
     const [amount, setAmount] = useState()
+    const [ticker, setTicker] = useState()
 
     // function numberWithCommas(x) {
     //     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     // }
+
+    const handleDropdown = (event, data) => {
+        // setCategory(data.value)
+        // console.log(data.value)
+        let splitStock = data.value.split('|')
+        setTicker(splitStock[0])
+        setName(splitStock[1])
+    }
+    
 
     const stockCategoryId = props.allCategories.filter(category => {
         if (category.name === "Stocks"){
@@ -60,6 +67,7 @@ const StockForm = (props) => {
             body: JSON.stringify({
                 name: name,
                 amount: amount,
+                ticker: ticker,
                 description: description,
                 category_id: stockCategoryId[0].id
             })
@@ -69,9 +77,11 @@ const StockForm = (props) => {
         .then(resp => resp.json())
         .then(data => {
 
-            let stockObject = data.category.data.attributes
+            // console.log(data)
+
+            let stockObject = data.stock.data.attributes
             props.addStock(stockObject)
-            localStorage.stockCategoryId = data.category.data.relationships.category.data.id
+            localStorage.stockCategoryId = data.stock.data.relationships.category.data.id
         })
         clearState();
     }
@@ -79,7 +89,7 @@ const StockForm = (props) => {
     return (
         <div className='stock-chart-container-form'>
 
-            {console.log(formattedStocks)}
+            {/* {console.log(resultStocks)} */}
 
             <Grid textAlign='center' style={{ height: '50vh' }} verticalAlign='middle'>
                 <Grid.Column style={{ maxWidth: 450 }}>
@@ -90,10 +100,21 @@ const StockForm = (props) => {
                     <form onSubmit={(e)=>{ props.stockvalues[0] > 0 ? submit(e) : alert("Not enough money!")}}>
                         <Segment raised>
 
+
+
                         <div className="ui pointing below label">
-                            Please input a name.
+                            Please choose a stock.
                         </div>
-                        <Form.Input fluid icon='edit' iconPosition='left' placeholder='e.g. AAPL, AMZN, MSFT, GOOG...' onChange={(e) => setName(e.target.value)} value={name} type='text' />
+
+                        <Dropdown
+                            placeholder='Select a Stock'
+                            fluid
+                            search
+                            selection
+                            onChange={handleDropdown}
+                            options={resultStocks}
+                        />
+                        {/* <Form.Input fluid icon='edit' iconPosition='left' placeholder='e.g. AAPL, AMZN, MSFT, GOOG...' onChange={(e) => setName(e.target.value)} value={name} type='text' /> */}
 
                         <br></br>
 

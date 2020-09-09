@@ -7,7 +7,9 @@ import {connect} from 'react-redux';
 
 class StockChart extends Component {
 
-
+    componentDidMount() {
+        this.props.fetchStock()
+    }
 
     render() {
 

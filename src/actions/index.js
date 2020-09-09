@@ -102,7 +102,7 @@ export const fetchCategories = () => {
             })
 
             const cryptosCategories = result.map(category => {
-                if (category.attributes.name === "Cryptos"){
+                if (category.attributes.name === "Crypto"){
                     return category.attributes.id
                 } else {
                     return undefined

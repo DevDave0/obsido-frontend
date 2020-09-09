@@ -1,10 +1,17 @@
 import React, { useState } from 'react'
-import { Form, Grid, Header, Segment, Icon} from 'semantic-ui-react'
+import { Form, Grid, Header, Segment, Icon, Dropdown} from 'semantic-ui-react'
 import {connect} from 'react-redux';
 import { addCryptos } from '../actions/index'
+import cryptocurrencies from 'cryptocurrencies'
 
 const baseURL = 'http://localhost:3000/'
 const cryptosURL = baseURL + 'cryptos'
+
+// const allCryptos = cryptocurrencies.split(',')
+const cryptoObjectArray = [];
+for (const [key, value] of Object.entries(cryptocurrencies)) {
+    cryptoObjectArray.push({value:value, key: key, text: `${key} | ${value}`})
+  }
 
 
 const CryptoForm = (props) => {
@@ -12,6 +19,7 @@ const CryptoForm = (props) => {
     const [name, setName] = useState('')
     const [description, setDescription] = useState('')
     const [amount, setAmount] = useState()
+    const [ticker, setTicker] = useState()
 
     // function numberWithCommas(x) {
     //     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
@@ -22,6 +30,15 @@ const CryptoForm = (props) => {
             return category
         }
     })
+
+    const handleDropdown = (event, data) => {
+        console.log(data)
+        // setCategory(data.value)
+        // console.log(data.value)
+        // let splitStock = data.value.split('|')
+        // setTicker(splitStock[0])
+        // setName(splitStock[1])
+    }
 
 
 
@@ -45,6 +62,7 @@ const CryptoForm = (props) => {
             body: JSON.stringify({
                 name: name,
                 amount: amount,
+                ticker: ticker,
                 description: description,
                 category_id: cryptosCategoryId[0].id
             })
@@ -54,15 +72,18 @@ const CryptoForm = (props) => {
         .then(resp => resp.json())
         .then(data => {
 
-            let cryptosObject = data.category.data.attributes
-            props.addCryptos(cryptosObject)
-            localStorage.cryptosCategoryId = data.category.data.relationships.category.data.id
+            // let cryptosObject = data.category.data.attributes
+            // props.addCryptos(cryptosObject)
+            // localStorage.cryptosCategoryId = data.category.data.relationships.category.data.id
         })
         clearState();
     }
 
     return (
         <div className='cryptos-chart-container-form'>
+
+            {/* {console.log(cryptocurrencies)} */}
+            {console.log(cryptoObjectArray)}
 
             <Grid textAlign='center' style={{ height: '50vh' }} verticalAlign='middle'>
                 <Grid.Column style={{ maxWidth: 450 }}>
@@ -72,6 +93,16 @@ const CryptoForm = (props) => {
                     </Header>
                     <form onSubmit={(e)=>{ props.cryptosvalues[0] > 0 ? submit(e) : alert("Not enough money!")}}>
                         <Segment raised>
+
+
+                        <Dropdown
+                            placeholder='Select a Stock'
+                            fluid
+                            search
+                            selection
+                            onChange={handleDropdown}
+                            options={cryptoObjectArray}
+                        />
 
                         <div className="ui pointing below label">
                             Please input a name.

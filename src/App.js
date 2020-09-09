@@ -33,7 +33,7 @@ class App extends React.Component {
             <Route exact path="/home" render={(routeProps) => (this.props.login) ? <Main routeProps={routeProps}/> : 
             <Redirect to='/' /> } />
 
-            <Route exact path='/log'  component={Log} />
+            <Route exact path='/log'  render={(routeProps) => <Log {...routeProps} />} />
 
         </div>
       </BrowserRouter>

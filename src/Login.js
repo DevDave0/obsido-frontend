@@ -42,6 +42,7 @@ class Login extends Component {
 
                 localStorage.token = data.token
                 localStorage.userId = data.user.data.attributes.id
+                localStorage.userName = data.user.data.attributes.name
             }
         })
     }

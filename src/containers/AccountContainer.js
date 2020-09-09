@@ -63,7 +63,7 @@ class AccountContainer extends Component {
 
   render() {
     return (
-      <div>
+      <div className='ui segment raised stacked padded'>
         <SearchLog 
             changeSearch={this.changeSearch}
         />

@@ -9,6 +9,7 @@ import LogContainer from './LogContainer'
 
 
 
+
 const Log = (props) => {
 
     const [toggle, setToggle] = useState(false);
@@ -27,6 +28,7 @@ const Log = (props) => {
         props.clearCategoryIndex()
         props.clearFood()
         localStorage.clear()
+        props.history.push("/")
     }
 
     const toggleMenu = () => {

@@ -2,9 +2,24 @@ import React, { useState } from 'react'
 import { Form, Grid, Header, Segment, Icon} from 'semantic-ui-react'
 import {connect} from 'react-redux';
 import { addStock } from '../actions/index'
+import StockList from '../StockList'
 
 const baseURL = 'http://localhost:3000/'
 const stockURL = baseURL + 'stocks'
+
+const seperatedStocks = StockList.match(/[^\r\n]+/g)
+
+const formattedStocks = seperatedStocks.map(stock => {
+    return stock.split(' - ')[0]
+})
+
+// const resultStocks = () => {
+//     result = []
+//     seperatedStocks.forEach(stock => {
+//         stock.split(' - ')
+//     })
+// }
+// const resultStocks = seperatedStocks.substring(seperatedStocks.indexOf(' -'))
 
 
 const StockForm = (props) => {
@@ -63,6 +78,8 @@ const StockForm = (props) => {
 
     return (
         <div className='stock-chart-container-form'>
+
+            {console.log(formattedStocks)}
 
             <Grid textAlign='center' style={{ height: '50vh' }} verticalAlign='middle'>
                 <Grid.Column style={{ maxWidth: 450 }}>

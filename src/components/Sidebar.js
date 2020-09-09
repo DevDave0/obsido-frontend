@@ -24,14 +24,14 @@ const Sidebar = (props) => {
                     <i className='smile icon'></i>
                     User Information
                 </a>
-                <a className='item' href='example.com'>
+                {/* <a className='item' href='example.com'>
                     <i className='calendar icon'></i>
                     Monthly Spending
                 </a>
                 <a className='item' href='example.com'>
                     <i className='home icon'></i>
                     Placeholder
-                </a>
+                </a> */}
 
             </div>
 

@@ -4,7 +4,7 @@ import SpendingLogItem from './SpendingLogItem'
 
 const SpendingLogList = (props) => {
 
-    let { categories } = props
+    let { categories, deleteCategory } = props
 
   return (
     <table className="log ui celled striped padded table">
@@ -22,8 +22,11 @@ const SpendingLogList = (props) => {
           <th>
             <h3 className="ui center aligned header">Amount</h3>
           </th>
+          <th>
+            <h3 className="ui center aligned header">Delete</h3>
+          </th>
         </tr>
-        {categories.map(category => <SpendingLogItem key={category.id} category={category} />)}
+        {categories.map(category => <SpendingLogItem key={category.id} category={category} deleteCategory={deleteCategory} />)}
       </tbody>
     </table>
   );

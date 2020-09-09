@@ -7,9 +7,9 @@ import {connect} from 'react-redux';
 
 class CryptoChart extends Component {
 
-    // componentDidMount() {
-    //     this.props.fetchCryptos()
-    // }
+    componentDidMount() {
+        this.props.fetchCryptos()
+    }
 
     render() {
 
@@ -19,8 +19,6 @@ class CryptoChart extends Component {
         this.props.cryptosvalues[0] = subtractFromTotal
 
         this.props.cryptosnames.unshift('Crypto')
-
-        // console.log(this.props.foods)
 
         return (
             <div className='main-chart-container'>

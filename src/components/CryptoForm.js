@@ -10,7 +10,7 @@ const cryptosURL = baseURL + 'cryptos'
 // const allCryptos = cryptocurrencies.split(',')
 const cryptoObjectArray = [];
 for (const [key, value] of Object.entries(cryptocurrencies)) {
-    cryptoObjectArray.push({value:value, key: key, text: `${key} | ${value}`})
+    cryptoObjectArray.push({value:`${key}|${value}`, key: key, text: `${key} | ${value}`})
   }
 
 
@@ -32,12 +32,12 @@ const CryptoForm = (props) => {
     })
 
     const handleDropdown = (event, data) => {
-        console.log(data)
+        // console.log(data)
         // setCategory(data.value)
         // console.log(data.value)
-        // let splitStock = data.value.split('|')
-        // setTicker(splitStock[0])
-        // setName(splitStock[1])
+        let splitCrypto = data.value.split('|')
+        setTicker(splitCrypto[0])
+        setName(splitCrypto[1])
     }
 
 
@@ -71,10 +71,10 @@ const CryptoForm = (props) => {
         fetch(cryptosURL, options)
         .then(resp => resp.json())
         .then(data => {
-
-            // let cryptosObject = data.category.data.attributes
-            // props.addCryptos(cryptosObject)
-            // localStorage.cryptosCategoryId = data.category.data.relationships.category.data.id
+            // console.log(data)
+            let cryptosObject = data.crypto.data.attributes
+            props.addCryptos(cryptosObject)
+            localStorage.cryptosCategoryId = data.crypto.data.relationships.category.data.id
         })
         clearState();
     }
@@ -83,7 +83,7 @@ const CryptoForm = (props) => {
         <div className='cryptos-chart-container-form'>
 
             {/* {console.log(cryptocurrencies)} */}
-            {console.log(cryptoObjectArray)}
+            {/* {console.log(cryptoObjectArray)} */}
 
             <Grid textAlign='center' style={{ height: '50vh' }} verticalAlign='middle'>
                 <Grid.Column style={{ maxWidth: 450 }}>
@@ -94,20 +94,18 @@ const CryptoForm = (props) => {
                     <form onSubmit={(e)=>{ props.cryptosvalues[0] > 0 ? submit(e) : alert("Not enough money!")}}>
                         <Segment raised>
 
-
+                        <div className="ui pointing below label">
+                            Please choose a Cryptocurrency
+                        </div>
                         <Dropdown
-                            placeholder='Select a Stock'
+                            placeholder='Select a Cryptocurrency'
                             fluid
                             search
                             selection
                             onChange={handleDropdown}
                             options={cryptoObjectArray}
                         />
-
-                        <div className="ui pointing below label">
-                            Please input a name.
-                        </div>
-                        <Form.Input fluid icon='edit' iconPosition='left' placeholder='e.g. Bitcoin, Ethereum, XRP...' onChange={(e) => setName(e.target.value)} value={name} type='text' />
+                        {/* <Form.Input fluid icon='edit' iconPosition='left' placeholder='e.g. Bitcoin, Ethereum, XRP...' onChange={(e) => setName(e.target.value)} value={name} type='text' /> */}
 
                         <br></br>
 

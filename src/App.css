@@ -1,5 +1,42 @@
 .obsido {
     text-align: center;
+    /* display: inline; */
+    /* position: relative; */
+    font: 50px Helvetica, Sans-Serif;
+	letter-spacing: -1px;
+	color: rgba(88, 158, 238, 0.5); 
+}
+
+.login{
+    background: url("./coin.jpeg") no-repeat center center fixed ;
+    filter: grayscale(40%);
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.ui.raised.segment.login-modal{
+    opacity:0.97 ;
+}
+
+.ui.raised.segment.sign-up-modal{
+    opacity:0.97 ;
+}
+
+.sign-up{
+    background: url("./coin.jpeg") no-repeat center center fixed ;
+    filter: grayscale(40%);
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.obsido:after {
+	content: "Obsido";
+	position: absolute; left: 680px; top: 40px;
+	color: rgba(58, 192, 185, 0.315);   
 }
 
 

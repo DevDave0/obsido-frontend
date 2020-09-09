@@ -44,10 +44,11 @@ class SignUp extends Component {
 
     render() {
         return(
-            <div>
+            <div className='sign-up'>
 
             <Grid textAlign='center' style={{ height: '100vh' }} verticalAlign='middle'>
                 <Grid.Column style={{ maxWidth: 450 }}>
+                    <Segment raised className='sign-up-modal'>
                     <Header as='h2' color='teal' textAlign='center'>
                         <Icon name='check circle' />
                         Sign Up
@@ -63,8 +64,9 @@ class SignUp extends Component {
                     </Segment>
 
                 </form>
+                </Segment>
                 <Message>
-                    Go back to < Link to='/login'>Login Page</Link>
+                    Go back to < Link to='/'>Login Page</Link>
                 </Message>
 
                 </Grid.Column>

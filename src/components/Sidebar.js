@@ -20,7 +20,7 @@ const Sidebar = (props) => {
                     <i className='block layout icon'></i>
                     Spending Log
                 </a>
-                <a className='item' href='info'>
+                <a className='item' href='user_info'>
                     <i className='smile icon'></i>
                     User Information
                 </a>

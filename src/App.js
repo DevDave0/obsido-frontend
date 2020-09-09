@@ -8,6 +8,7 @@ import Main from './containers/Main'
 import {connect} from 'react-redux';
 import {loggedIn} from './actions/index';
 import Log from './containers/Log'
+import UserInfo from './containers/UserInfo'
 
 
 class App extends React.Component {
@@ -34,6 +35,9 @@ class App extends React.Component {
             <Redirect to='/' /> } />
 
             <Route exact path='/log'  render={(routeProps) => <Log {...routeProps} />} />
+
+            <Route exact path='/user_info'  render={(routeProps) => <UserInfo {...routeProps} />} />
+
 
         </div>
       </BrowserRouter>

@@ -26,9 +26,12 @@ class FoodDoughnutChart extends Component {
             return color;
         }
 
-        function numberWithCommas(x) {
-            return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+
+        function currencyFormat(num) {
+            return '$' + num.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
         }
+
+
         // ['Food', 'Cryptos', 'Food', 'Bills', 'Shopping', 'Misc']
 
         let data =  {
@@ -104,7 +107,7 @@ class FoodDoughnutChart extends Component {
                     },
                     title: {
                         display: true,
-                        text: (`$${numberWithCommas(totalFoodAmount)} spent on food`),
+                        text: (`${currencyFormat(totalFoodAmount)} spent on food`),
                         fontSize: 25
                     },
                     legend: {
@@ -124,7 +127,7 @@ class FoodDoughnutChart extends Component {
                                 let total = meta.total;
                                 let currentValue = dataset.data[tooltipItem.index];
                                 let percentage = parseFloat((currentValue/total*100).toFixed(1));
-                                return '$' + numberWithCommas(currentValue) + ' (' + percentage + '%)';
+                                return currencyFormat(currentValue) + ' (' + percentage + '%)';
                             },
                             title: function(tooltipItem, data) {
                                 return data.labels[tooltipItem[0].index];

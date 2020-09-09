@@ -19,8 +19,8 @@ class MiscDoughnutChart extends Component {
             return color;
         }
 
-        function numberWithCommas(x) {
-            return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        function currencyFormat(num) {
+            return '$' + num.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
         }
 
         let data =  {
@@ -92,7 +92,7 @@ class MiscDoughnutChart extends Component {
                     },
                     title: {
                         display: true,
-                        text: (`$${numberWithCommas(totalMiscAmount)} spent on miscellaneous things`),
+                        text: (`${currencyFormat(totalMiscAmount)} spent on miscellaneous things`),
                         fontSize: 25
                     },
                     legend: {
@@ -112,7 +112,7 @@ class MiscDoughnutChart extends Component {
                                 let total = meta.total;
                                 let currentValue = dataset.data[tooltipItem.index];
                                 let percentage = parseFloat((currentValue/total*100).toFixed(1));
-                                return '$' + numberWithCommas(currentValue) + ' (' + percentage + '%)';
+                                return currencyFormat(currentValue) + ' (' + percentage + '%)';
                             },
                             title: function(tooltipItem, data) {
                                 return data.labels[tooltipItem[0].index];

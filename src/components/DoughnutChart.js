@@ -45,8 +45,8 @@ class DoughnutChart extends Component {
             ]
         }
 
-        function numberWithCommas(x) {
-            return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        function currencyFormat(num) {
+            return '$' + num.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
         }
         
     return (
@@ -76,7 +76,7 @@ class DoughnutChart extends Component {
                     },
                     title: {
                         display: true,
-                        text: (`$${numberWithCommas(this.props.allCategories.map(category => category.amount).reduce((a,b)=> a + b, 0))} spent`),
+                        text: (`${currencyFormat(this.props.allCategories.map(category => category.amount).reduce((a,b)=> a + b, 0))} spent`),
                         fontSize: 25
                     },
                     legend: {
@@ -96,7 +96,7 @@ class DoughnutChart extends Component {
                                 let total = meta.total;
                                 let currentValue = dataset.data[tooltipItem.index];
                                 let percentage = parseFloat((currentValue/total*100).toFixed(1));
-                                return '$' + numberWithCommas(currentValue) + ' (' + percentage + '%)';
+                                return currencyFormat(currentValue) + ' (' + percentage + '%)';
                             },
                             title: function(tooltipItem, data) {
                                 return data.labels[tooltipItem[0].index];

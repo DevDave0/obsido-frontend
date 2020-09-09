@@ -19,8 +19,8 @@ class CryptoDoughnutChart extends Component {
             return color;
         }
 
-        function numberWithCommas(x) {
-            return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        function currencyFormat(num) {
+            return '$' + num.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
         }
 
         let data =  {
@@ -92,7 +92,7 @@ class CryptoDoughnutChart extends Component {
                     },
                     title: {
                         display: true,
-                        text: (`$${numberWithCommas(totalCryptosAmount)} spent on Cryptocurrencies and digital assets`),
+                        text: (`${currencyFormat(totalCryptosAmount)} spent on Cryptocurrencies and digital assets`),
                         fontSize: 25
                     },
                     legend: {
@@ -112,7 +112,7 @@ class CryptoDoughnutChart extends Component {
                                 let total = meta.total;
                                 let currentValue = dataset.data[tooltipItem.index];
                                 let percentage = parseFloat((currentValue/total*100).toFixed(1));
-                                return '$' + numberWithCommas(currentValue) + ' (' + percentage + '%)';
+                                return currencyFormat(currentValue) + ' (' + percentage + '%)';
                             },
                             title: function(tooltipItem, data) {
                                 return data.labels[tooltipItem[0].index];

@@ -1,5 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
 
+.footer {
+    text-align: center;
+    font-size: 1em;
+    font-family: 'Fredoka One', cursive;
+}
 .obsido {
     text-align: center;
 
@@ -11,10 +16,6 @@
     color: rgba(103, 236, 185, 0.596); 
     text-shadow: 2px 2px #6f82c9;
 }
-
-
-
-
 
 .login{
     background: url("./coin.jpeg") no-repeat center center fixed ;
@@ -41,13 +42,6 @@
     -o-background-size: cover;
     background-size: cover;
 }
-
-/* .obsido:after {
-	content: "Obsido";
-	position: absolute; left: 680px; top: 40px;
-	color: rgba(58, 192, 185, 0.315);   
-} */
-
 
 .main-chart-container {
     /* display: flex; */

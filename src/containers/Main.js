@@ -5,6 +5,7 @@ import ChartContainer from './ChartContainer'
 import Header from '../components/Header'
 import Sidebar from '../components/Sidebar'
 import classNames from 'classnames'
+import { Icon, Menu } from 'semantic-ui-react'
 
 const Main = (props) => {
 
@@ -53,9 +54,37 @@ const Main = (props) => {
                     {/* set conditional rendering */}
                     <ChartContainer />
 
+
                 </div>
 
             </div>
+
+            <div className='footer'>
+                Created by David Chung
+                <Menu.Item
+                href="https://github.com/DevDave0"
+                position="right"
+                target="_blank"
+                ><Icon name='github'/></Menu.Item>
+
+                <Menu.Item
+                href="https://www.linkedin.com/in/david-chung-0324/"
+                position="right"
+                target="_blank"
+                >
+                <Icon name='linkedin'/>
+                </Menu.Item>
+
+                <Menu.Item
+                href="https://medium.com/@dbchung3"
+                position="right"
+                target="_blank"
+                >
+                    <Icon name='medium'/>
+                </Menu.Item>
+                
+            </div>
+            
         </div>
     )
 }

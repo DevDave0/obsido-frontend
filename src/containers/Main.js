@@ -41,8 +41,14 @@ const Main = (props) => {
                 <Sidebar toggleMenu={toggle} />
                 <div className={classes}>
                     <br></br>
-                    <h1 className='obsido'>Obsido</h1>
                     <br></br>
+
+                    <h1 className='obsido'>obsido</h1>
+                    <br></br>
+                    <br></br>
+
+
+                    
 
                     {/* set conditional rendering */}
                     <ChartContainer />

@@ -1,12 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
+
 .obsido {
     text-align: center;
-    /* display: inline; */
-    /* position: relative; */
-    font: 50px Helvetica, Sans-Serif;
+
+    /* font: 50px Helvetica, Sans-Serif; */
+    font-family: 'Fredoka One', cursive;
+    font-size: 6em;
     letter-spacing: -1px;
     
-	color: rgba(90, 78, 199, 0.5); 
+    color: rgba(103, 236, 185, 0.596); 
+    text-shadow: 2px 2px #6f82c9;
 }
+
+
+
+
 
 .login{
     background: url("./coin.jpeg") no-repeat center center fixed ;
@@ -45,7 +53,7 @@
     /* display: flex; */
     /* flex-wrap: wrap; */
     margin: auto;
-    max-width: 1700px;
+    max-width: 1520px;
     max-height: 1700px;
     /* border: 5px solid red; */
 }
@@ -74,7 +82,7 @@
     /* width: 300px; */
     /* margin: 0; */
     /* float: right;     */
-    padding-bottom: 50px;
+    padding-bottom: 20px;
     padding-left: 120px;
     /* flex-grow: 1; */
     /* justify-content: flex-end; */

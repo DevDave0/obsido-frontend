@@ -18,7 +18,7 @@ class DailyLineGraph extends Component {
     render(){
 
         let data =  {
-            labels: ['09/04/20', '09/05/20', '09/06/20', '09/07/20', '09/08/20', '09/09/20'],
+            labels: ['09/04/20', '09/05/20', '09/06/20', '09/07/20', '09/08/20', '09/09/20', '09/10/20'],
             datasets: [
                 {
                     label: 'Amount',
@@ -30,7 +30,8 @@ class DailyLineGraph extends Component {
                         500, 
                         1200, 
                         650, 
-                        1200],
+                        1200,
+                        1000],
                     backgroundColor:"rgba(75,192,192,0.2)",
                     borderColor: "rgba(75,192,192,1)"
                 }

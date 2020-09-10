@@ -52,8 +52,11 @@ class Login extends Component {
             <div className='login'>
                 <Grid textAlign='center' style={{ height: '100vh' }} verticalAlign='middle'>
                     <Grid.Column style={{ maxWidth: 450 }}>
+                    <h1 className='obsido'>obsido</h1>
                     <Segment raised className='login-modal'>
+                        
                         <Header as='h2' color='teal' textAlign='center'>
+                            
                             <Icon name='check circle' />
                             Log-in to your account
                         </Header>

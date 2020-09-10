@@ -38,6 +38,7 @@ class SignUp extends Component {
                 this.props.loggedIn()
                 localStorage.token = data.token
                 localStorage.userId = data.user.data.attributes.id
+                localStorage.userName = data.user.data.attributes.name
             }
         })
     }
@@ -48,6 +49,7 @@ class SignUp extends Component {
 
             <Grid textAlign='center' style={{ height: '100vh' }} verticalAlign='middle'>
                 <Grid.Column style={{ maxWidth: 450 }}>
+                <h1 className='obsido'>obsido</h1>
                     <Segment raised className='sign-up-modal'>
                     <Header as='h2' color='teal' textAlign='center'>
                         <Icon name='check circle' />

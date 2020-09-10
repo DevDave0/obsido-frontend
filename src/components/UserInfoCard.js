@@ -123,6 +123,50 @@ const UserInfoCard = (props) => {
         },
       ]
 
+      const items4 = [
+        {
+          header: 'Average amount spent on Stocks',
+          description:
+          `${currencyFormat(stocks.reduce((a,b)=> a + b, 0)/stocks.length)}`,
+          meta: 'Average amount of spending in the Stock Category',
+        },
+        {
+          header: 'Average amount spent on Cryptocurrencies',
+          description:
+          `${currencyFormat(crypto.reduce((a,b)=> a + b, 0)/crypto.length)}`,
+          meta: 'Average amount of spending in cryptocurrencies and digital assets',
+        },
+        {
+          header: 'Average amount spent on Food',
+          description:
+          `${currencyFormat(food.reduce((a,b)=> a + b, 0)/food.length)}`,
+          meta: 'Average amount of spending in the Food Category',
+        },
+    ]
+
+    const items5 = [
+        {
+          header: 'Average amount spent on Bills',
+          description:
+          `${currencyFormat(bills.reduce((a,b)=> a + b, 0)/bills.length)}`,
+          meta: 'Average amount of spending in the Bills Category',
+        },
+        {
+          header: 'Average amount spent on Shopping',
+          description:
+          `${currencyFormat(shopping.reduce((a,b)=> a + b, 0)/shopping.length)}`,
+          meta: 'Average amount of spending in the Shopping Category',
+        },
+        {
+          header: 'Average amount spent on Misc.',
+          description:
+          `${currencyFormat(misc.reduce((a,b)=> a + b, 0)/misc.length)}`,
+          meta: 'Average amount of spending in the Misc. Category',
+        },
+      ]
+
+    
+
     useEffect(() => {
         props.fetchCategories()
         
@@ -136,6 +180,8 @@ const UserInfoCard = (props) => {
             <Card.Group stackable className='raised ui red' itemsPerRow={3} items={items} />
             <Card.Group stackable className='raised ui orange' itemsPerRow={3} items={items2} />
             <Card.Group stackable className='raised ui yellow' itemsPerRow={3} items={items3} />
+            <Card.Group stackable className='raised ui green' itemsPerRow={3} items={items4} />
+            <Card.Group stackable className='raised ui blue' itemsPerRow={3} items={items5} />
         </div>
 
     );

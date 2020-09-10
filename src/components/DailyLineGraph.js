@@ -73,15 +73,18 @@ class DailyLineGraph extends Component {
                         text: 'Total amount spent per day',
                         fontSize: 25
                     },
-                    // legend: {
-                    //     display: true ,
-                    //     position: "left",
-                    //     align: "center",
-                    //     labels: {
-                    //         fontSize: 30
-                    //     },
-
-                    // },
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                fontSize: 16
+                            }
+                        }],
+                        xAxes: [{
+                            ticks: {
+                                fontSize: 16
+                            }
+                        }]
+                    },
                     tooltips: {
                         callbacks: {
                             label: function(tooltipItem, data){

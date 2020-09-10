@@ -14,7 +14,7 @@ const Sidebar = (props) => {
             <div className={cx}>
                 <a className='item' href='home'>
                     <i className='home icon'></i>
-                    Profile
+                    Home
                 </a>
                 <a className='item' href='log'>
                     <i className='block layout icon'></i>
@@ -24,10 +24,10 @@ const Sidebar = (props) => {
                     <i className='user icon'></i>
                     User Information
                 </a>
-                {/* <a className='item' href='example.com'>
+                <a className='item' href='daily'>
                     <i className='calendar icon'></i>
-                    Monthly Spending
-                </a> */}
+                    Daily Spending
+                </a>
                 {/* <a className='item' href='stock_search'>
                     <i className='search icon'></i>
                     Stock Search

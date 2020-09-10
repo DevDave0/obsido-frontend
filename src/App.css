@@ -5,7 +5,7 @@
     font: 50px Helvetica, Sans-Serif;
     letter-spacing: -1px;
     
-	color: rgba(37, 78, 124, 0.5); 
+	color: rgba(90, 78, 199, 0.5); 
 }
 
 .login{
@@ -137,6 +137,12 @@
     text-align: center;
 }
 
+.line.ui.raised.segment {
+    box-sizing: border-box;
+    text-align: center;
+    margin: auto;
+}
+
 .log.ui.celled.striped.padded.table {
     text-align: center;
 }
@@ -144,3 +150,7 @@
 input[type="radio"]{
     margin: 0 10px 0 10px;
   }
+
+.App {
+    background-image: linear-gradient(-225deg, #E3FDF5 0%, #FFE6FA 100%);
+}

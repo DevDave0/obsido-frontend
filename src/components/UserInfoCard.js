@@ -58,20 +58,6 @@ const UserInfoCard = (props) => {
         }
     })
 
-
-    // const forLoopMinMax = () => {
-    //     let min = totalAmount[0], max = totalAmount[0]
-      
-    //     for (let i = 1; i < totalAmount.length; i++) {
-    //       let value = totalAmount[i]
-    //       min = (value < min) ? value : min
-    //       max = (value > max) ? value : max
-    //     }
-      
-    //     return [min, max]
-    //   }
-
-    // const [forLoopMin, forLoopMax] = forLoopMinMax()
     
     const items = [
         {

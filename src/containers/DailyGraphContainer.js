@@ -1,10 +1,16 @@
 import React, { Component } from 'react'
 import '../App.css'
 import DailyLineGraph from '../components/DailyLineGraph'
+import { fetchCategories } from '../actions/index'
+import {connect} from 'react-redux';
 
 
 
 class DailyGraphContainer extends Component {
+
+    componentDidMount() {
+        this.props.fetchCategories()
+    }
 
     capitalize = (s) => {
         return s.charAt(0).toUpperCase() + s.slice(1)
@@ -22,5 +28,11 @@ class DailyGraphContainer extends Component {
     }
 }
 
+const mapStateToProps = state => {
+    return {
+        categories: state.category.categories.map(category => category)
+    }
+}
 
-export default DailyGraphContainer
+
+export default connect(mapStateToProps, {fetchCategories})(DailyGraphContainer)

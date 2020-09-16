@@ -22,7 +22,7 @@ class DailyGraphContainer extends Component {
                 <div className="ui segment raised teal ">
                     <h2>Daily Spending for: {this.capitalize(localStorage.userName)}</h2>
                 </div>
-                    <DailyLineGraph />
+                    <DailyLineGraph categories={this.props.categories}/>
             </div>
         )
     }

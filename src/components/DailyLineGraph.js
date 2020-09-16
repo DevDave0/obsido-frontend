@@ -1,37 +1,50 @@
 import React, {Component} from 'react';
 import {Line} from 'react-chartjs-2'
-import { Segment, Header, Icon } from 'semantic-ui-react'
+import { Segment } from 'semantic-ui-react'
 import {connect} from 'react-redux';
+// import Moment from 'react-moment';
+import moment from 'moment';
+import 'moment-timezone';
 
-
-// Ill have to do a fetch for all categories and then find the ones that match the user Id
-
-// function getRandomInt (min, max) {
-//     return Math.floor(Math.random() * (max - min + 1)) + min;
-// }
-// ^^^This function generates random numbers used for testing my chart
 
 
 class DailyLineGraph extends Component {
-    // Here I want to input the sections of data with my own category data. 
+
 
     render(){
 
+        let categoryDates = this.props.categories.map(category => {
+            return moment(category.created_at).format('MM/DD/YYYY')
+        })
+
+        let uniqueDates = categoryDates.filter((v, i, a) => a.indexOf(v) === i)
+
+        let sumVals = []
+        let daysSum = []
+
+        let sumVal = uniqueDates.forEach(day => {
+            let total = 0;
+            this.props.categories.forEach(category => {
+                if (day === (moment(category.created_at).format('MM/DD/YYYY'))) {
+                    total += category.amount
+                }
+            })
+            sumVals.push(total)
+            daysSum.push([day, total])
+        })
+
         let data =  {
-            labels: ['09/04/20', '09/05/20', '09/06/20', '09/07/20', '09/08/20', '09/09/20', '09/10/20'],
+            labels: (daysSum.map(array => {
+                return array[0]
+            })),
             datasets: [
                 {
                     label: 'Amount',
                     hoverBackgroundColor: "rgba(51, 82, 73, 0.87)",
                     hoverBorderColor: "white",
-                    data: [
-                        1000, 
-                        1900, 
-                        500, 
-                        1200, 
-                        650, 
-                        1200,
-                        1000],
+                    data: (daysSum.map(array => {
+                        return array[1]
+                    })),
                     backgroundColor:"rgba(75,192,192,0.2)",
                     borderColor: "rgba(75,192,192,1)"
                 }
@@ -44,6 +57,9 @@ class DailyLineGraph extends Component {
         
     return (
         <div className='line-graph' >
+
+            {console.log(daysSum)}
+
             {/* <Header as='h2' color='teal' textAlign='center'>
                 <Icon name='dollar sign' />
                     Daily Spending
@@ -51,16 +67,6 @@ class DailyLineGraph extends Component {
             <Segment raised>
             <Line 
                 data={data}
-                // onElementsClick={element => {
-                //     if (element[0] === undefined){
-                //         console.log('Please click an event!')
-                //     } else {
-                //         this.props.logCategoryIndex(element[0]._index)
-                //     }
-                // }}
-                // (element => {this.props.logCategoryIndex(element[0]._index)})
-                // width={800}
-                // height={400}
                 options={{
                     autoDisplayLegend: true,
                     responsive:true, 

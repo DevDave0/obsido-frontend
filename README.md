@@ -7,6 +7,12 @@ A web application for creating and visualizing tasks. Veni Vidi Vici "gamify's" 
 
 Obsido is a web application that allows a user to:
 1. Log any amount of money a user spends in 6 different categories.
+2. Have the amounts of money spent shown in a dynamic doughnut chart. 
+3. Click on the categories within the doughnut chart and see more specific spending within the category. 
+4. See a spending log of the current user of every amount inputed in each category. 
+5. Delete a transaction from the spending log. 
+6. See information about how the user spends money on cards that changes with spending.
+
 <!-- 2. Show each task in a with their category with the ability to filter each category. 
 3. When completing a task, adds experience points to the user to "level up". 
 4. Allows a user to delete tasks. 

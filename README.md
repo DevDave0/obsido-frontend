@@ -1,7 +1,7 @@
 # Obsido
 Obsido is a web application for budgeting/investing. Obsido means "invest" in latin. Users can input any amount of money they spend and see that data dynamically in visually dynamic charts. This project was made with React, Redux, Chart.js, Semantic-UI, and Rails API back end. 
 
-<!-- ![Veni Vidi Vici](https://github.com/DevDave0/To-Do-Frontend/blob/master/Screen%20Shot%202020-08-20%20at%2011.19.58%20AM.png) -->
+![Obsido](https://github.com/DevDave0/obsido-frontend/blob/master/Screen%20Shot%202020-10-06%20at%2012.42.16%20PM.png)
 
 ## Project Details 
 

@@ -1,5 +1,5 @@
 # Obsido
-A web application for creating and visualizing tasks. Veni Vidi Vici "gamify's" a normal to-do list!
+Obsido is a web application for budgeting/investing. Obsido means "invest" in latin. Users can input any amount of money they spend and see that data dynamically in visually dynamic charts. This project was made with React, Redux, Chart.js, Semantic-UI, and Rails API back end. 
 
 <!-- ![Veni Vidi Vici](https://github.com/DevDave0/To-Do-Frontend/blob/master/Screen%20Shot%202020-08-20%20at%2011.19.58%20AM.png) -->
 
@@ -12,13 +12,13 @@ Obsido is a web application that allows a user to:
 4. See a spending log of the current user of every amount inputed in each category. 
 5. Delete a transaction from the spending log. 
 6. See information about how the user spends money on cards that changes with spending.
+7. See daily spending in a line graph. 
 
-<!-- 2. Show each task in a with their category with the ability to filter each category. 
-3. When completing a task, adds experience points to the user to "level up". 
-4. Allows a user to delete tasks. 
-5. Visualizes the level of the user with an Avatar that changes with each level up.  -->
+<!-- Libraries used: 
 
-<!-- Video demo link: https://www.youtube.com/watch?v=XLV9ZdpmQOs -->
+* react -->
+
+Video demo link: https://youtu.be/SYQzvOHRVDw
 
 <!-- 
 ## Stack

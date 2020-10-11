@@ -14,18 +14,33 @@ Obsido is a web application that allows a user to:
 6. See information about how the user spends money on cards that changes with spending.
 7. See daily spending in a line graph. 
 
-<!-- Libraries used: 
+Libraries used: 
 
-* react -->
+* React
+* React-Router-Dom
+* Redux and React-Redux
+* Chart.js
+* Semantic-UI
+* Moment.js
 
 Video demo link: https://youtu.be/SYQzvOHRVDw
 
-<!-- 
-## Stack
-
-1. React.js with implementation of React Routers
-2. Semantic-UI framework with custom CSS
-3. Ruby on Rails API with JWT Authentication
-4. Usage of React Hooks to manage state -->
-
 Project backend: https://github.com/DevDave0/obsido-backend
+
+## Installation Instructions
+
+1. Fork the front and back end repositories and run `git clone <repository link here>`.
+2. Run `bundle install` on the backend repository to install the required gems. 
+3. Must have PostgreSQL installed. 
+4. Run `rails db:create` then `rails db:migrate` to create database and migrate schema. 
+5. Run `rails s` to start up the backend server. 
+6. Run `npm install` on this repository to install all libraries and dependencies. 
+7. Run `npm start` to run the server. 
+
+## Contact
+
+If you want to contact me, you can reach me at dbchung24@gmail.com
+
+## License
+
+This project uses the following license: MIT License
